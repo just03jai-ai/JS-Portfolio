@@ -6,91 +6,13 @@
 <title>Jai Singh CV</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Jai Singh, Product Designer: CV.">
-<style>
-/* Layout: one A4 sheet column, ATS-friendly (single column, real text, standard headings).
-   Screen: sheet on a warm ground with a small toolbar. Print/PDF: sheet only. */
-:root {
-  color-scheme: light;
-  --ground: #f2efec;
-  --paper: #ffffff;
-  --ink: #16171c;
-  --text: #33343a;
-  --muted: #6a6b72;
-  --rule: #d9d5d1;
-  --accent: #9a5a33;
-  --f: Carlito, Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; }
-body { background: var(--ground); color: var(--text); font: 400 10.5pt/1.42 var(--f); -webkit-font-smoothing: antialiased; }
-a { color: inherit; }
-h1, h2, h3, p, ul { margin: 0; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-
-.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(242,239,236,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 6; background: var(--ground); }
-.bar-in { max-width: calc(210mm + 2 * max(16px, env(safe-area-inset-left, 0px))); margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 8px; font: 500 14px/1 "Segoe UI", Arial, sans-serif; }
-.bar a.back { padding-block: 10px; text-decoration: none; color: var(--ink); display: inline-flex; gap: 8px; align-items: center; }
-.btns { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 8px; font: 600 13.5px/1 "Segoe UI", Arial, sans-serif; text-decoration: none; border: 1px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; }
-.btn.o { background: #fff; color: var(--ink); border-color: var(--rule); }
-.btn[disabled] { opacity: .6; cursor: progress; }
-.status { font: 400 12.5px/1.3 "Segoe UI", Arial, sans-serif; color: var(--muted); min-height: 1em; }
-
-.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; }
-.sheet { max-width: 210mm; margin-inline: auto; background: var(--paper); box-shadow: 0 30px 60px -36px rgba(22,23,28,.35); padding: 16mm 17mm; }
-
-header.id { display: grid; gap: 4px; padding-bottom: 10px; border-bottom: 1.5pt solid var(--ink); }
-header.id h1 { font-size: 22pt; line-height: 1.1; color: var(--ink); font-weight: 700; letter-spacing: -.2pt; }
-header.id .role { font-size: 12pt; color: var(--accent); font-weight: 700; }
-header.id .contact { font-size: 10pt; color: var(--text); overflow-wrap: anywhere; }
-header.id .contact span { display: inline-block; }
-header.id .contact + .contact { margin-top: 2px; }
-header.id .contact span + span::before { content: "\00a0|\00a0"; color: var(--muted); }
-
-section { margin-top: 13px; }
-section > h2 { font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: .8pt; color: var(--ink); padding-bottom: 3px; border-bottom: .75pt solid var(--rule); margin-bottom: 7px; }
-.item + .item { margin-top: 9px; }
-.item .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.item h3 { font-size: 10.8pt; font-weight: 700; color: var(--ink); }
-.item .date { font-size: 10pt; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.item .sub { font-size: 10pt; color: var(--muted); }
-ul { padding-left: 15px; margin-top: 4px; }
-li { margin-top: 2px; padding-left: 2px; }
-li::marker { color: var(--muted); }
-.skills p + p { margin-top: 3px; }
-.skills b, .tools b { color: var(--ink); font-weight: 700; }
-p.lead { color: var(--text); }
-.item p { margin-top: 3px; }
-.tag { font-weight: 400; color: var(--muted); }
-.nw { white-space: nowrap; }
-
-@media (max-width: 640px) {
-  body { font-size: 10pt; }
-  .wrap { padding-block: 16px 40px; }
-  .sheet { padding: 22px 18px; }
-  header.id h1 { font-size: 19pt; }
-}
-@page { size: A4; margin: 14mm 15mm; }
-@media print {
-  body { background: #fff; }
-  .bar, body::before { display: none !important; }
-  .wrap { padding: 0 !important; }
-  .sheet { box-shadow: none; padding: 0; max-width: none; }
-  .item, li { break-inside: avoid; }
-  section > h2 { break-after: avoid; }
-  a { text-decoration: none; }
-}
-</style>
+<link rel="stylesheet" href="../css/cv.css">
 </head>
 <body>
 
 <div class="bar" role="navigation" aria-label="CV actions">
   <div class="bar-in">
-    <a class="back" href="index.html#about"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to portfolio</a>
+    <a class="back" href="../index.html#about"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to portfolio</a>
     <div class="btns">
       <span class="status" id="dl-status" role="status"></span>
       <button class="btn" type="button" id="dl-btn" data-cv-download>Download CV (PDF)</button>
@@ -200,31 +122,6 @@ p.lead { color: var(--text); }
   </article>
 </div>
 
-<script>
-/* Download CV: uses the viewer's download capability; falls back to opening the PDF. */
-(function () {
-  var PDF = 'assets/cv/Jai_Singh_CV.pdf';
-  var btn = document.getElementById('dl-btn');
-  var status = document.getElementById('dl-status');
-  var dl = null;
-  if (window.claude && typeof window.claude.use === 'function') {
-    window.claude.use('downloads').then(function (d) { dl = d; }).catch(function () { dl = null; });
-  }
-  btn.addEventListener('click', function () {
-    if (!dl) { window.open(PDF, '_blank', 'noopener'); return; }
-    btn.disabled = true; status.textContent = 'Preparing PDF…';
-    fetch(PDF).then(function (r) { if (!r.ok) throw new Error('fetch'); return r.blob(); })
-      .then(function (blob) { return dl.save({ filename: 'Jai_Singh_CV.pdf', data: blob }); })
-      .then(function () { status.textContent = 'Saved.'; })
-      .catch(function (e) {
-        var c = e && e.code;
-        if (c === 'declined') status.textContent = '';
-        else if (c === 'rate_limited') status.textContent = 'A save prompt is already open.';
-        else { status.textContent = 'Download isn’t available here. Opening the PDF instead.'; window.open(PDF, '_blank', 'noopener'); }
-      })
-      .then(function () { btn.disabled = false; });
-  });
-})();
-</script>
+<script src="../js/cv-page.js"></script>
 </body>
 </html>

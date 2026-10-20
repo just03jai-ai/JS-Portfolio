@@ -5,328 +5,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@600;700&family=Instrument+Sans:wght@400;600;700&family=Geist+Mono:wght@400&display=swap">
-<style>
-/* Layout: built 1:1 from the Figma "Desktop" frame (1440px). 1240px content column,
-   120px between sections, full-bleed dark bands. Narrower screens reflow. */
-:root {
-  color-scheme: light;
-  --white: #ffffff;
-  --ink: #111218;
-  --ink-2: #111112;
-  --accent: #d49269;
-  --accent-tint: #fff8f2;
-  --accent-line: rgba(212,146,105,0.11);
-  --hero-1: #5a5a5a;
-  --hero-2: #3e3e3e;
-  --hero-dim: #333333;
-  --hero-sub: #d1d5db;
-  --ghost: #f5f5f5;
-  --ghost-dark: #272829;
-  --text: #52525b;
-  --muted: #71717a;
-  --label: rgba(60,60,67,0.6);
-  --line: #e4e4e7;
-  --pill: #f4f4f5;
-  --photo-bg: #f2ede9;
-  --step-body: #606569;
-  --footer-bg: #f5f3f1;
-
-  --f-ui: "Outfit", "Helvetica Neue", Arial, sans-serif;
-  --f-sora: "Sora", "Outfit", "Helvetica Neue", Arial, sans-serif;
-  --f-inst: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
-  --f-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-
-  --content: 1240px;
-  --gap-section: 120px;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
-body { background: var(--white); color: var(--ink); font-family: var(--f-ui); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-p { margin: 0; }
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-
-.wrap {
-  width: 100%;
-  max-width: calc(var(--content) + 2 * max(16px, env(safe-area-inset-left, 0px)));
-  margin-inline: auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-
-.page { display: flex; flex-direction: column; gap: var(--gap-section); position: relative; }
-
-/* ---------- Hero ---------- */
-.hero { position: relative; height: 810px; }
-.hero-bg {
-  position: absolute; inset: 0; overflow: hidden;
-  background: radial-gradient(617.778px 347.5px at 50% 462.5px, var(--hero-1) 0%, var(--hero-2) 100%);
-}
-.hero-portrait {
-  position: absolute; top: 132px; left: 50%; transform: translateX(-50%);
-  width: 878px; height: 789px; max-width: none;
-  object-fit: cover; mix-blend-mode: soft-light; pointer-events: none;
-}
-.header { position: relative; z-index: 2; padding-top: 30px; }
-.header-inner { display: flex; align-items: center; justify-content: space-between; }
-.logo { position: relative; width: 74px; height: 55px; flex-shrink: 0; }
-.logo img { position: absolute; inset: 13.1% 15.93% 7.74% 11.95%; width: auto; height: auto; }
-.logo img { width: calc(100% - 15.93% - 11.95%); height: calc(100% - 13.1% - 7.74%); }
-.nav { display: flex; align-items: center; gap: 36px; }
-.nav a {
-  height: 30px; display: flex; align-items: center;
-  font-size: 14px; letter-spacing: 0.42px; color: var(--white); text-transform: capitalize;
-  border-bottom: 2px solid transparent; transition: border-color .2s, opacity .2s;
-}
-.nav a:hover { opacity: .8; }
-.nav a.is-active { border-bottom-color: var(--accent); opacity: 1; }
-
-.hero-text {
-  position: absolute; z-index: 1; left: 0; right: 0; top: 405px;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  padding-inline: 16px;
-}
-.hero-title { font-weight: 700; font-size: 60px; line-height: 1.2; color: var(--hero-dim); white-space: nowrap; margin: 0; }
-.hero-title span { color: var(--white); }
-.hero-sub {
-  margin-top: 3px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px;
-  color: var(--hero-sub); line-height: 1.4; font-size: 20px;
-}
-.hero-sub .dot { font-size: 16px; }
-
-.ticker { position: absolute; z-index: 3; left: 0; right: 0; top: 787px; height: 47px; overflow: hidden; }
-.ticker { background: #f4f3f2; border-block: 1px solid #e6e4e2; display: flex; align-items: center; }
-.ticker-track { display: flex; flex-shrink: 0; width: max-content; animation: ticker-run 48s linear infinite; }
-.ticker:hover .ticker-track { animation-play-state: paused; }
-.ticker-group { display: flex; align-items: center; flex-shrink: 0; }
-.ticker-item { font-family: var(--f-mono); font-size: 15px; letter-spacing: 0.3px; color: #55575c; white-space: nowrap; padding-inline: 28px; }
-.ticker-item b { font-weight: 400; color: var(--ink); }
-.ticker-sep { color: var(--accent); font-family: var(--f-mono); font-size: 15px; }
-@keyframes ticker-run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (max-width: 600px) { .ticker-item { font-size: 13px; padding-inline: 18px; } }
-
-/* ---------- Section heading (ghost word + line + subtitle) ---------- */
-.sec-head { position: relative; height: 72px; overflow: visible; }
-.sec-head .ghost { position: absolute; left: 50px; top: 0; font-weight: 700; font-size: 60px; line-height: 1.2; color: var(--ghost); white-space: nowrap; margin: 0; }
-.sec-head .rule { position: absolute; left: 0; top: 35px; width: 45px; height: 2px; }
-.sec-head .sub { position: absolute; left: 54px; top: 19px; font-size: 24px; line-height: 1.4; color: var(--hero-dim); white-space: nowrap; }
-.dark .sec-head .ghost { color: var(--ghost-dark); }
-.dark .sec-head .sub { color: var(--white); }
-
-.stack-80 { display: flex; flex-direction: column; gap: 80px; }
-
-/* ---------- Project cards ---------- */
-.card {
-  background: var(--white); border: 1px solid var(--line); border-radius: 24px; padding: 24px;
-  filter: drop-shadow(0 10px 12px rgba(0,0,0,0.05));
-}
-.featured { display: flex; flex-direction: column; gap: 16px; }
-.eyebrow { font-family: var(--f-ui); font-weight: 700; font-size: 12px; text-transform: uppercase; color: var(--accent); white-space: pre; }
-.eyebrow.sora { font-family: var(--f-sora); }
-.card-info { display: flex; flex-direction: column; gap: 6px; }
-.card-title { font-weight: 700; font-size: 24px; color: var(--ink-2); margin: 0; }
-.card-desc { font-size: 14px; line-height: 1.4; color: var(--text); }
-.shot { border-radius: 20px; overflow: hidden; background: var(--pill); }
-.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.card:hover .shot img { transform: scale(1.025); }
-.shot-featured { aspect-ratio: 1191 / 669; max-width: 100%; }
-.shot-sm { height: 220px; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { background: var(--pill); padding: 4px 10px; border-radius: 100px; font-size: 12px; color: var(--text); white-space: nowrap; }
-
-.featured-foot { display: flex; align-items: center; gap: 16px; }
-.impact { flex: 1 0 0; min-width: 0; display: flex; flex-wrap: wrap; gap: 24px; padding-block: 8px; }
-.impact div { display: flex; flex-direction: column; gap: 4px; white-space: nowrap; }
-.impact b { font-weight: 500; font-size: 20px; color: var(--accent); }
-.impact span { font-size: 12px; color: var(--text); }
-
-.btn-soft {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0;
-  background: var(--accent-tint); border: 1px solid var(--accent-line); border-radius: 8px;
-  padding: 14px 16px; font-size: 14px; color: var(--accent); white-space: nowrap;
-  transition: background-color .2s, border-color .2s;
-}
-.btn-soft:hover { background: #fdeee1; border-color: rgba(212,146,105,0.35); }
-.btn-soft img { width: 18px; height: 18px; transition: transform .2s; }
-.btn-soft:hover img { transform: rotate(45deg); }
-
-.btn-dark {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0;
-  background: var(--ink); border-radius: 8px; padding: 14px 24px;
-  font-weight: 600; font-size: 14px; color: var(--white); white-space: nowrap;
-  filter: drop-shadow(0 10px 12px rgba(0,0,0,0.2)); transition: transform .2s;
-}
-.btn-dark img { width: 16px; height: 16px; transition: transform .2s; }
-.btn-dark:hover img { transform: translateX(3px); }
-.btn-dark:active { transform: translateY(1px); }
-
-.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
-.grid3 .card { display: flex; flex-direction: column; justify-content: space-between; min-height: 530px; }
-.card-head { display: flex; justify-content: space-between; align-items: center; }
-.num { font-weight: 600; font-size: 14px; color: var(--muted); }
-.num.sora { font-family: var(--f-sora); }
-.media-block { display: flex; flex-direction: column; gap: 16px; }
-.grid3 .btn-soft { align-self: flex-start; }
-.center { display: flex; justify-content: center; }
-
-/* ---------- Quote band ---------- */
-.quote { background: var(--ink); min-height: 454px; display: flex; align-items: center; }
-.quote .wrap { display: flex; flex-direction: column; align-items: center; gap: 32px; padding-block: 80px; text-align: center; }
-.quote .label { font-size: 12px; text-transform: uppercase; color: var(--accent); }
-.quote blockquote { margin: 0; font-size: 72px; line-height: 1.4; color: var(--white); text-wrap: balance; }
-.quote blockquote em { font-style: normal; color: var(--accent); }
-
-/* ---------- About ---------- */
-.about-card { border: 1px solid var(--line); border-radius: 30px; padding: 48px; display: flex; flex-direction: column; gap: 30px; background: var(--white); }
-.about-top { display: flex; gap: 48px; align-items: flex-start; }
-.photo { position: relative; width: 380px; height: 392px; max-width: 100%; flex-shrink: 0; border-radius: 24px; overflow: hidden; background: var(--photo-bg); isolation: isolate; }
-.photo-clip { position: absolute; top: 18px; left: 0; right: 0; bottom: 0; overflow: hidden; }
-.photo-rot { position: absolute; left: -118.734px; top: -84.973px; width: 585.855px; height: 618.344px; display: flex; align-items: center; justify-content: center; }
-.photo-rot > div { flex: none; width: 517.167px; height: 554.974px; border-radius: 28px; overflow: hidden; transform: rotate(7.58deg); position: relative; }
-.photo-rot img { position: absolute; left: 0; top: -15.69%; width: 100%; height: 124.28%; max-width: none; object-fit: cover; }
-
-.about-text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 30px; }
-.profile { display: flex; flex-direction: column; gap: 6px; }
-.profile h3 { margin: 0; font-weight: 500; font-size: 30px; color: var(--ink); }
-.profile p { font-weight: 300; font-size: 20px; line-height: 1.4; color: var(--label); }
-.intro { font-weight: 300; font-size: 24px; line-height: 1.4; color: var(--label); }
-.paras { display: flex; flex-direction: column; gap: 24px; font-weight: 300; font-size: 20px; line-height: 1.4; color: var(--label); }
-
-.about-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-.about-foot-left { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
-.socials { max-width: 100%; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; }
-.about-foot .cv-ctas { gap: 24px; flex-shrink: 0; }
-.chip {
-  display: inline-flex; align-items: center; gap: 10px; height: 40px; padding-inline: 16px;
-  background: var(--white); border: 1px solid var(--line); border-radius: 8px;
-  font-size: 14px; letter-spacing: 0.42px; color: var(--ink); text-transform: capitalize; white-space: nowrap;
-  transition: border-color .2s;
-}
-a.chip:hover { border-color: var(--accent); }
-.chip img { width: 16px; height: 16px; }
-.focus-list { display: flex; flex-wrap: wrap; gap: 8px; line-height: 1.4; color: var(--label); }
-.focus-list span { font-weight: 300; font-size: 20px; white-space: nowrap; }
-.focus-list i { font-style: normal; font-size: 16px; }
-
-/* ---------- Workflows band ---------- */
-.dark { background: var(--ink); }
-.dark > .wrap { padding-block: 80px; }
-.steps { display: flex; gap: 24px; align-items: stretch; }
-.step { flex: 1 0 0; min-width: 0; background: var(--ghost-dark); border: 1px solid var(--ghost-dark); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px; font-weight: 300; line-height: 1.4; }
-.step h4 { margin: 0; font-weight: 300; font-size: 24px; color: var(--white); }
-.step p { font-size: 20px; color: var(--step-body); }
-
-/* ---------- Tool stack ---------- */
-.tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px 4px; }
-
-/* ---------- Footer ---------- */
-.footer { background: var(--footer-bg); }
-.footer > .wrap { padding-block: 120px 80px; display: flex; flex-direction: column; gap: 80px; }
-.cta { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
-.cta-left { width: 742px; max-width: 100%; display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
-.cta h2 { margin: 0; font-family: var(--f-ui); font-weight: 700; font-size: 52px; line-height: 1.15; letter-spacing: -2px; color: var(--ink-2); text-wrap: balance; }
-.cta h2 em { font-style: normal; color: var(--accent); }
-.cta-copy { font-size: 16px; line-height: 1.6; color: var(--text); }
-.contacts { width: 360px; max-width: 100%; display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
-.contact { background: var(--white); border-radius: 16px; padding: 16px; display: flex; gap: 16px; align-items: flex-start; }
-.contact img { width: 16px; height: 16px; flex-shrink: 0; }
-.contact div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.contact small { font-family: var(--f-mono); font-size: 10px; color: var(--muted); }
-a.contact { text-decoration: none; transition: box-shadow .2s; }
-a.contact:hover { box-shadow: 0 0 0 1px var(--accent); }
-.contact strong { font-family: var(--f-inst); font-weight: 600; font-size: 14px; color: var(--ink-2); overflow-wrap: anywhere; user-select: all; }
-.bottom-bar { border-top: 1px solid var(--line); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; font-family: var(--f-inst); }
-.bottom-bar .left { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.bottom-bar b { font-weight: 700; font-size: 14px; color: var(--ink-2); }
-.bottom-bar b em { font-style: normal; color: var(--accent); }
-.bottom-bar span { font-size: 12px; color: var(--muted); }
-
-/* ---------- Motion (subtle; disabled by prefers-reduced-motion above) ---------- */
-@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes portrait-in { from { opacity: 0; transform: translateX(-50%) scale(1.04); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
-.header { animation: fade .9s ease both; }
-.hero-portrait { animation: portrait-in 1.6s cubic-bezier(.2,.7,.2,1) both; }
-.hero-title { animation: rise .9s cubic-bezier(.2,.7,.2,1) .25s both; }
-.hero-sub { animation: rise .9s cubic-bezier(.2,.7,.2,1) .45s both; }
-.ticker { animation: fade 1s ease .7s both; }
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
-.reveal.in { opacity: 1; transform: none; }
-.card { transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .8s cubic-bezier(.2,.7,.2,1); }
-.card.reveal { transition: opacity .8s cubic-bezier(.2,.7,.2,1) var(--d, 0ms), transform .8s cubic-bezier(.2,.7,.2,1) var(--d, 0ms); }
-.card.in:hover, .card:not(.reveal):hover { transform: translateY(-4px); transition-delay: 0ms; transition-duration: .35s; }
-.step { transition: border-color .3s, background-color .3s; }
-.step:hover { border-color: rgba(212,146,105,0.45); }
-.tools .chip { transition: border-color .2s, transform .2s; }
-.tools .chip:hover { border-color: var(--accent); }
-.tools .chip { text-transform: none; }
-.tools .chip img { width: 18px; height: 18px; object-fit: contain; }
-.nav a { position: relative; }
-
-/* ---------- CV actions ---------- */
-.cv-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-button.btn-soft { font-family: inherit; cursor: pointer; }
-button.btn-soft[disabled] { opacity: .6; cursor: progress; }
-.cv-status { font-size: 13px; color: var(--muted); min-height: 1em; margin-top: -16px; }
-
-/* ---------- Responsive fixes (audit) ---------- */
-.sec-head { max-width: 100%; overflow: hidden; }
-@media (max-width: 380px) { .sec-head .ghost { font-size: 34px; top: 12px; } .sec-head .sub { font-size: 19px; } }
-
-@media (max-width: 1280px) and (min-width: 901px) { .steps { display: grid !important; grid-template-columns: repeat(5, minmax(0, 1fr)); } .step { flex: none !important; } .step h4 { font-size: 20px; } .step p { font-size: 16px; } }
-@media (max-width: 900px) { .steps { display: grid !important; grid-template-columns: minmax(0, 1fr); } .step { flex: none !important; } }
-
-/* ---------- Narrower screens (not in the Figma frame; reflow only) ---------- */
-@media (max-width: 1280px) {
-  .steps { flex-wrap: wrap; }
-  .step { flex: 1 1 200px; }
-  .quote blockquote { font-size: clamp(30px, 5vw, 72px); }
-}
-@media (max-width: 1100px) {
-  .about-top { flex-direction: column; }
-  .grid3 { grid-template-columns: 1fr 1fr; }
-  .featured-foot { flex-wrap: wrap; }
-}
-@media (max-width: 900px) {
-  :root { --gap-section: 88px; }
-  .hero { height: 640px; }
-  .hero-portrait { width: min(878px, 130vw); height: auto; aspect-ratio: 878 / 789; top: 110px; }
-  .hero-text { top: auto; bottom: 120px; }
-  .hero-title { white-space: normal; font-size: clamp(34px, 6.6vw, 60px); text-wrap: balance; }
-  .hero-sub { font-size: 17px; }
-  .ticker { top: 617px; }
-  .grid3 { grid-template-columns: minmax(0, 1fr); }
-  .grid3 .btn-soft { white-space: normal; text-align: left; }
-  .eyebrow { white-space: normal; }
-  .grid3 .card { min-height: 0; gap: 24px; }
-  .cta { flex-direction: column; }
-  .cta h2 { font-size: clamp(36px, 7vw, 52px); letter-spacing: -1.5px; }
-  .about-foot { flex-direction: column; align-items: flex-start; }
-  .about-foot-left { flex: none; width: 100%; }
-  .tools { justify-content: flex-start; gap: 12px 8px; }
-}
-@media (max-width: 600px) {
-  .nav { gap: 12px; }
-  .nav a { font-size: 12px; letter-spacing: 0.2px; }
-  .logo { width: 56px; height: 42px; }
-  .hero { height: 560px; }
-  .ticker { top: 537px; }
-  .sec-head .ghost { font-size: 44px; left: 40px; top: 6px; }
-  .sec-head .sub { font-size: 21px; }
-  .about-card { padding: 20px; border-radius: 24px; }
-  .photo { width: 100%; }
-  .intro { font-size: 20px; }
-  .paras, .focus-list span, .profile p { font-size: 17px; }
-  .step p { font-size: 17px; }
-  .socials { justify-content: flex-start; }
-  .dark > .wrap { padding-block: 64px; }
-  .footer > .wrap { padding-block: 80px 48px; gap: 56px; }
-  .card { padding: 18px; }
-}
-</style>
+<link rel="stylesheet" href="css/home.css">
 
 <div class="page" id="top">
 
@@ -340,8 +19,8 @@ button.btn-soft[disabled] { opacity: .6; cursor: progress; }
         <a class="logo" href="#top" aria-label="Jai Singh — home"><img src="assets/logo.svg" alt=""></a>
         <nav class="nav" aria-label="Primary">
           <a href="#top" class="is-active" data-spy="top" aria-current="page">Home</a>
-          <a href="projects.html" data-spy="work">Work</a>
-          <a href="experience.html" data-spy="experience">Experience</a>
+          <a href="pages/projects.html" data-spy="work">Work</a>
+          <a href="pages/experience.html" data-spy="experience">Experience</a>
           <a href="#contact" data-spy="contact">Contact</a>
         </nav>
       </div>
@@ -382,7 +61,7 @@ button.btn-soft[disabled] { opacity: .6; cursor: progress; }
           <div><b>3</b><span>Connected products</span></div>
           <div><b>SO → Close</b><span>End-to-end trade lifecycle</span></div>
         </div>
-        <a class="btn-soft" href="farmart-os.html">Explore Case Study <img src="assets/arrow-circle.svg" alt=""></a>
+        <a class="btn-soft" href="case-studies/farmart-os.html">Explore Case Study <img src="assets/arrow-circle.svg" alt=""></a>
       </div>
     </article>
 
@@ -397,7 +76,7 @@ button.btn-soft[disabled] { opacity: .6; cursor: progress; }
           <div class="shot shot-sm"><img src="assets/farmart-os.webp" alt="FarMart OS illustration: warehouse loading bay with trucks and operators" width="1672" height="941" loading="lazy"></div>
           <div class="tags"><span class="tag">Product Design</span><span class="tag">UX Strategy</span><span class="tag">Design Systems</span></div>
         </div>
-        <a class="btn-soft" href="farmart-os.html">Explore Design &amp; Case Study <img src="assets/arrow-circle-2.svg" alt=""></a>
+        <a class="btn-soft" href="case-studies/farmart-os.html">Explore Design &amp; Case Study <img src="assets/arrow-circle-2.svg" alt=""></a>
       </article>
 
       <article class="card">
@@ -410,7 +89,7 @@ button.btn-soft[disabled] { opacity: .6; cursor: progress; }
           <div class="shot shot-sm"><img src="assets/farmart-pro.webp" alt="FarMart Pro illustration: two phones showing order and route screens" width="1672" height="941" loading="lazy"></div>
           <div class="tags"><span class="tag">Mobile</span><span class="tag">Operations</span><span class="tag">Payments</span></div>
         </div>
-        <a class="btn-soft" href="farmart-pro.html">Explore Design &amp; Case Study <img src="assets/arrow-circle.svg" alt=""></a>
+        <a class="btn-soft" href="case-studies/farmart-pro.html">Explore Design &amp; Case Study <img src="assets/arrow-circle.svg" alt=""></a>
       </article>
 
       <article class="card">
@@ -423,11 +102,11 @@ button.btn-soft[disabled] { opacity: .6; cursor: progress; }
           <div class="shot shot-sm"><img src="assets/farmart-app.webp" alt="FarMart App illustration: phones showing product catalogue beside seed sacks" width="1672" height="941" loading="lazy"></div>
           <div class="tags"><span class="tag">UI / UX</span><span class="tag">Mobile</span><span class="tag">Figma</span></div>
         </div>
-        <a class="btn-soft" href="farmart-app.html">Explore Design &amp; Case Study <img src="assets/arrow-circle.svg" alt=""></a>
+        <a class="btn-soft" href="case-studies/farmart-app.html">Explore Design &amp; Case Study <img src="assets/arrow-circle.svg" alt=""></a>
       </article>
     </div>
 
-    <div class="center"><a class="btn-dark" href="projects.html">View all projects <img src="assets/arrow-right.svg" alt=""></a></div>
+    <div class="center"><a class="btn-dark" href="pages/projects.html">View all projects <img src="assets/arrow-right.svg" alt=""></a></div>
   </section>
 
   <!-- Quote -->
@@ -477,7 +156,7 @@ button.btn-soft[disabled] { opacity: .6; cursor: progress; }
             <span>Enterprise Systems</span><i>·</i><span>Operational Products</span><i>·</i><span>Design Systems</span><i>·</i><span>AI Products</span>
           </div>
         </div>
-        <div class="cv-ctas"><a class="btn-soft" href="cv.html">View CV <img src="assets/arrow-circle.svg" alt=""></a><a class="btn-dark" href="experience.html">Know more <img src="assets/arrow-right.svg" alt=""></a></div>
+        <div class="cv-ctas"><a class="btn-soft" href="pages/cv.html">View CV <img src="assets/arrow-circle.svg" alt=""></a><a class="btn-dark" href="pages/experience.html">Know more <img src="assets/arrow-right.svg" alt=""></a></div>
       </div>
     </div>
   </section>
@@ -542,110 +221,8 @@ button.btn-soft[disabled] { opacity: .6; cursor: progress; }
   </footer>
 </div>
 
-<script>
-(function () {
-  /* Active tab follows scroll position. #top wraps the whole page, so it can't be
-     observed like the others: Home stays active until the Work section reaches
-     40% of the viewport; Contact wins once you hit the bottom of the page. */
-  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
-  function setActive(id) {
-    links.forEach(function (a) {
-      var on = a.getAttribute('data-spy') === id;
-      a.classList.toggle('is-active', on);
-      if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
-    });
-  }
-  var order = ['work', 'about', 'contact'];
-  function update() {
-    var line = window.innerHeight * 0.4, current = 'top';
-    order.forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= line) current = id;
-    });
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = 'contact';
-    setActive(current);
-  }
-  var ticking = false;
-  window.addEventListener('scroll', function () {
-    if (ticking) return; ticking = true;
-    requestAnimationFrame(function () { ticking = false; update(); });
-  }, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
-
-/* Scroll reveal + count-up. Skipped entirely for reduced motion; only applied to
-   elements below the fold so nothing visible at load ever flickers. */
-(function () {
-  if (!('IntersectionObserver' in window)) return;
-  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var groups = [
-    ['.sec-head', 0], ['.featured', 0], ['.grid3 .card', 110], ['.center', 0],
-    ['.quote .label', 0], ['.quote blockquote', 0], ['.about-card', 0],
-    ['.step', 90], ['.tools .chip', 35], ['.cta-left', 0], ['.contacts', 120], ['.bottom-bar', 0]
-  ];
-  var vh = window.innerHeight;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('in');
-      io.unobserve(e.target);
-      if (e.target.classList.contains('featured')) countUp(e.target);
-    });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-  groups.forEach(function (g) {
-    var els = document.querySelectorAll(g[0]);
-    Array.prototype.forEach.call(els, function (el, i) {
-      if (el.getBoundingClientRect().top < vh) return;
-      el.style.setProperty('--d', (i * g[1]) + 'ms');
-      el.classList.add('reveal');
-      io.observe(el);
-    });
-  });
-  function countUp(root) {
-    Array.prototype.forEach.call(root.querySelectorAll('.impact b'), function (b) {
-      var m = b.textContent.match(/^(\d+)(.*)$/); if (!m) return;
-      var end = +m[1], suffix = m[2], t0 = null, dur = 1200;
-      b.style.fontVariantNumeric = 'tabular-nums';
-      function tick(t) {
-        if (!t0) t0 = t;
-        var p = Math.min((t - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-        b.textContent = Math.round(end * eased) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      b.textContent = '0' + suffix;
-      requestAnimationFrame(tick);
-    });
-  }
-})();
-
-/* Download CV: the viewer's download capability when available, else open the PDF. */
-(function () {
-  var PDF = 'assets/cv/Jai_Singh_CV.pdf';
-  var btns = Array.prototype.slice.call(document.querySelectorAll('[data-cv-download]'));
-  var status = document.querySelector('.cv-status');
-  var dl = null;
-  function say(t) { if (status) status.textContent = t; }
-  if (window.claude && typeof window.claude.use === 'function') {
-    window.claude.use('downloads').then(function (d) { dl = d; }).catch(function () { dl = null; });
-  }
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (!dl) { window.open(PDF, '_blank', 'noopener'); return; }
-      btn.disabled = true; say('Preparing PDF…');
-      fetch(PDF).then(function (r) { if (!r.ok) throw new Error('fetch'); return r.blob(); })
-        .then(function (blob) { return dl.save({ filename: 'Jai_Singh_CV.pdf', data: blob }); })
-        .then(function () { say('Saved.'); })
-        .catch(function (e) {
-          var c = e && e.code;
-          if (c === 'declined') say('');
-          else if (c === 'rate_limited') say('A save prompt is already open.');
-          else { say('Download isn’t available here. Opening the PDF instead.'); window.open(PDF, '_blank', 'noopener'); }
-        })
-        .then(function () { btn.disabled = false; });
-    });
-  });
-})();
-</script>
+<script src="js/home.js"></script>
+<script>window.CV_PDF_PATH = 'assets/cv/Jai_Singh_CV.pdf';</script>
+<script src="js/cv-download.js"></script>
 
 </body></html>

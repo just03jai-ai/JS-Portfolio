@@ -1,0 +1,6 @@
+.art-ph { position: relative; margin-top: 32px; border-radius: 20px; overflow: hidden; background: #f4f4f5; aspect-ratio: 21 / 9; max-width: 100%; }
+.art-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.art-ph .chip-ph { position: absolute; left: 14px; top: 14px; font: 500 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); background: rgba(255,248,242,.94); border: 1px solid rgba(212,146,105,.35); padding: 6px 9px; border-radius: 6px; }
+.art-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.art-grid .art-ph { margin-top: 0; aspect-ratio: 16 / 10; }
+@media (max-width: 760px) { .art-grid { grid-template-columns: 1fr; } .art-ph { aspect-ratio: 16 / 10; } }
