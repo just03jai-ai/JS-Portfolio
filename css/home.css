@@ -81,7 +81,7 @@ img { display: block; max-width: 100%; }
   display: flex; flex-direction: column; align-items: center; text-align: center;
   padding-inline: 16px;
 }
-.hero-title { font-weight: 700; font-size: 60px; line-height: 1.2; color: var(--hero-dim); white-space: nowrap; margin: 0; }
+.hero-title { font-weight: 700; font-size: 60px; line-height: 1.2; color: #171B1C; white-space: nowrap; margin: 0; }
 .hero-title span { color: var(--white); }
 .hero-sub {
   margin-top: 3px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px;
