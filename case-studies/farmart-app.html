@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FarMart App Case Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="FarMart App: mobile apps connecting agri-input dealers, retailers and farmers, from onboarding to orders and produce collection.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/base.css">
+<style>
+.net { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,0.8fr) minmax(0,1.1fr) minmax(0,0.8fr) minmax(0,1fr); align-items: center; gap: 8px; }
+.node { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 4px; }
+.node h4 { font: 700 22px/1.15 var(--f-display); }
+.node p { font-size: 14px; color: var(--text); }
+.node.hub { background: var(--band); border-color: var(--band); }
+.node.hub h4 { color: #fff; } .node.hub p { color: var(--band-text); } .node.hub h5 { color: var(--accent); }
+.link { display: grid; gap: 6px; justify-items: center; text-align: center; }
+.link span { font: 400 11.5px/1.3 var(--f-mono); color: var(--muted); }
+.net-loop { margin-top: 16px; border: 1px dashed #cfc9c3; border-radius: 14px; padding: 14px 18px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; font-size: 14.5px; color: var(--text); }
+.net-loop b { font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-tint); padding: 6px 8px; border-radius: 999px; }
+.lanes { display: grid; gap: 10px; }
+.lane { display: grid; grid-template-columns: 96px minmax(0,1fr) 40px minmax(0,1fr) 40px minmax(0,1.2fr); align-items: center; gap: 6px; }
+.lane > b { font-size: 15px; font-weight: 600; }
+.lane .arw, .lane > svg { color: var(--accent); justify-self: center; }
+.st1 { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 14px; }
+.st1.end { background: var(--band); color: #fff; border-color: var(--band); font-weight: 500; }
+.inv { display: grid; grid-template-columns: minmax(0,1fr) 40px minmax(0,1.3fr) 40px minmax(0,1fr) 40px minmax(0,1fr); align-items: center; gap: 6px; }
+.inv > svg { color: var(--accent); justify-self: center; }
+.fork { display: grid; gap: 8px; }
+.modes { display: grid; grid-template-columns: minmax(0,1fr) 80px minmax(0,1fr); align-items: center; gap: 10px; }
+.toggle { justify-self: center; width: 60px; height: 32px; border-radius: 999px; background: var(--ink); position: relative; }
+.toggle span { position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); }
+.dg-money.six { grid-template-columns: repeat(6, minmax(0,1fr)); }
+.dg-money.seven { grid-template-columns: repeat(7, minmax(0,1fr)); }
+@media (max-width: 1000px) { .dg-money.seven { grid-template-columns: repeat(4, minmax(0,1fr)); } .dg-money.six { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (max-width: 900px) {
+  .net { grid-template-columns: 1fr; }
+  .link svg { transform: rotate(90deg); }
+  .lane { grid-template-columns: 1fr; }
+  .lane > svg { transform: rotate(90deg); }
+  .inv { grid-template-columns: 1fr; }
+  .inv > svg { transform: rotate(90deg); }
+  .modes { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) { .dg-money.six, .dg-money.seven { grid-template-columns: 1fr 1fr; } }
+.eco article .connect { font-size: 13px; padding: 10px 14px; }
+</style>
+<link rel="stylesheet" href="../css/mockups.css">
+<style>
+.hero-art { border-radius: 20px; overflow: hidden; background: #f4f4f5; aspect-ratio: 1191 / 669; max-width: 100%; }
+.hero-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+</style>
+<link rel="stylesheet" href="../css/hero-mockup.css">
+<link rel="stylesheet" href="../css/artwork-placeholders.css">
+<link rel="stylesheet" href="../css/platform-wireframes.css">
+<link rel="stylesheet" href="../css/responsive-fixes.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html#work"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Jai Singh · Work</a>
+    <div class="right">
+      <nav class="toc" aria-label="On this page">
+        <a href="#network">Network</a>
+        <a href="#onboarding">Onboarding</a>
+        <a href="#invites">Invites</a>
+        <a href="#transactions">Transactions</a>
+        <a href="#collection">Collection</a>
+        <a href="#screens">Screens</a>
+        <a href="#ecosystem">Ecosystem</a>
+      </nav>
+      <a class="connect" href="https://www.linkedin.com/in/jai-singh-639511173/" target="_blank" rel="noopener noreferrer">Let’s Connect</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="label">Case study · Mobile marketplace · 2020</p>
+    <h1>FarMart<em>App</em></h1>
+    <p class="lede">A family of mobile apps that connects agri-input dealers, village retailers and farmers, so seed, fertilizer and crop-protection products can be discovered, enquired about and ordered in one network.</p>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Product design<small>with stakeholders, from scratch</small></dd></div>
+      <div><dt>Company</dt><dd>FarMart, India</dd></div>
+      <div><dt>Period</dt><dd>2020<small>specification year</small></dd></div>
+      <div><dt>Surfaces</dt><dd>Dealer · Retailer · Farmer apps<small>Android</small></dd></div>
+      <div><dt>Method</dt><dd>Iterative releases<small>with A/B tests</small></dd></div>
+    </dl>
+    <figure class="hero-art"><img src="../assets/farmart-app.webp" alt="FarMart App project artwork: phones with a product catalogue beside seed sacks" width="1672" height="941"></figure>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: three mobile app screens connected left to right: a dealer app discovering retailers, a retailer app with dealer and farmer modes, and a farmer app following nearby retailers."><div class="wf-scroll"><div style="min-width:680px"><div class="wf-row" style="grid-template-columns:minmax(0,1fr) minmax(0,.55fr) minmax(0,1fr) minmax(0,.55fr) minmax(0,1fr);"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Discover retailers</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="map"><i style="left:20%;top:30%"></i><i style="left:58%;top:52%"></i><i style="left:78%;top:20%"></i></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:55%"></span><span class="bt ">Add</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:50%"></span><span class="bt ">Add</span></div></div></div><div class="nv"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><b>Dealer app</b> · supply</p></div><div class="wf-cell" style="align-self:center;gap:4px"><span class="t m" style="font-family:var(--f-mono)">invite · promote</span><span class="arrow-r"><svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M0 7h24M19 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="t m" style="font-family:var(--f-mono)">enquire · order</span></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Marketing</span><div class="toggle2"><span>Dealers</span><span class="on">Farmers</span></div></div><div class="bd"><div class="g2"><div class="bx "><span class="ln " style="--w:70%"></span></div><div class="bx "><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="ln " style="--w:50%"></span></div><div class="bx "><span class="ln " style="--w:65%"></span></div></div><div class="bx "><div class="rw"><span class="t s">Recipients</span><span class="pl g">12 on app</span></div></div></div><div class="nv"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><b>Retailer app</b> · hub</p></div><div class="wf-cell" style="align-self:center;gap:4px"><span class="t m" style="font-family:var(--f-mono)">follow · feeds</span><span class="arrow-r"><svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M0 7h24M19 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="t m" style="font-family:var(--f-mono)">promote · order</span></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Retailers near you</span><span class="ln " style="--w:45%"></span></div><div class="bd"><div class="tg"><span class="on">All</span><span>Following</span><span>New</span></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:50%"></span><span class="pl g">Following</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:55%"></span><span class="bt ">Follow</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:45%"></span><span class="bt ">Follow</span></div></div></div><div class="nv"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><b>Farmer app</b> · demand</p></div></div></div></div><div class="net-loop"><b>Produce collection</b><span>Retailers also collect produce from farmers for FarMart buyers, with field staff checking quality.</span></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>A three-sided network on mobile.</b> The retailer sits in the middle and needed to work in both directions.</figcaption></figure>
+  </div>
+
+  <!-- Network / context -->
+  <section class="wrap block" id="network" aria-labelledby="h-net">
+    <div class="sec-top">
+      <p class="label">Context</p>
+      <div class="measure">
+        <h2 id="h-net">A supply chain that ran on phone calls</h2>
+        <div class="body">
+          <p>Agri-inputs move from dealers to village retailers to farmers, and much of that trade happened over phone calls and visits. Each side had a different need: dealers wanted to find and reach more retailers, retailers wanted to compare dealers and stay in touch with their farmers, and farmers wanted trusted, local advice on what to buy.</p>
+          <p>The FarMart App family set out to give each side a reason to join, and a structured way to trade once they had. This was the earlier mobile product where I first learned how FarMart’s trade worked, before moving on to FarMartOS and FarMart PRO.</p>
+        </div>
+      </div>
+    </div>
+    <div class="indent">
+      <div class="three">
+        <div><h3>Dealers</h3><p>Find retailers nearby, promote their stock, answer enquiries and fulfil orders.</p></div>
+        <div><h3>Retailers</h3><p>Source from dealers on one side, serve and market to their farmers on the other.</p></div>
+        <div><h3>Farmers</h3><p>Discover and follow local retailers, ask questions, and get advice from their community.</p></div>
+      </div>
+      <p class="question"><span class="label">Design question</span>How might we bring a phone-and-paper trade onto an app, when most of the people we need are not on it yet?</p>
+    </div>
+  </section>
+
+  <!-- Onboarding -->
+  <section class="wrap block" id="onboarding" aria-labelledby="h-onb">
+    <div class="sec-top">
+      <p class="label">Flow 01 · Onboarding</p>
+      <div class="measure">
+        <h2 id="h-onb">Get in fast, then land where the value is</h2>
+        <div class="body"><p>All three apps start the same way: verify a phone number, fill a short profile, and go straight to the screen that shows why the app is worth it. Everything else in the profile can wait, with nudges to complete it later.</p></div>
+      </div>
+    </div>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: onboarding on three mobile apps. Each row shows three phone screens: verify phone with a one-time code, a short profile, and the landing screen: dealers and farmers land on discovering retailers, retailers land on marketing to their network."><div class="wf-scroll"><div style="min-width:620px;margin-top:-14px"><div class="wf-row" style="grid-template-columns:80px repeat(3,minmax(0,1fr));align-items:center;margin-top:14px"><b style="font-size:15px">Dealer</b><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Sign in</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="bx "><span class="t m">Mobile number</span><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t m">Code</span><div class="otp"><i class="on"></i><i class="on"></i><i></i><i></i></div></div><span class="bt ">Continue</span></div><div class="nv"></div></div><p class="wf-lbl">1 · verify phone</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Quick profile</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><span class="t m">Name</span><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t m">Business / village</span><span class="ln " style="--w:50%"></span></div><span class="bt ">Done</span></div><div class="nv"></div></div><p class="wf-lbl">2 · quick profile</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Discover retailers</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="map"><i style="left:20%;top:30%"></i><i style="left:58%;top:52%"></i><i style="left:78%;top:20%"></i></div><div class="bx hl"><div class="rw"><span class="av"></span><span class="ln " style="--w:55%"></span><span class="bt ">Add</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:50%"></span><span class="bt ">Add</span></div></div></div><div class="nv"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl">3 · <i>Discover retailers</i></p></div></div><div class="wf-row" style="grid-template-columns:80px repeat(3,minmax(0,1fr));align-items:center;margin-top:14px"><b style="font-size:15px">Retailer</b><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Sign in</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="bx "><span class="t m">Mobile number</span><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t m">Code</span><div class="otp"><i class="on"></i><i class="on"></i><i></i><i></i></div></div><span class="bt ">Continue</span></div><div class="nv"></div></div><p class="wf-lbl">1 · verify phone</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Quick profile</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><span class="t m">Name</span><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t m">Business / village</span><span class="ln " style="--w:50%"></span></div><span class="bt ">Done</span></div><div class="nv"></div></div><p class="wf-lbl">2 · quick profile</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Marketing</span><div class="toggle2"><span>Dealers</span><span class="on">Farmers</span></div></div><div class="bd"><div class="g2"><div class="bx hl"><span class="ln " style="--w:70%"></span></div><div class="bx "><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="ln " style="--w:50%"></span></div><div class="bx "><span class="ln " style="--w:65%"></span></div></div><div class="bx "><div class="rw"><span class="t s">Recipients</span><span class="pl g">12 on app</span></div></div></div><div class="nv"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl">3 · <i>Market to network</i></p></div></div><div class="wf-row" style="grid-template-columns:80px repeat(3,minmax(0,1fr));align-items:center;margin-top:14px"><b style="font-size:15px">Farmer</b><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Sign in</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="bx "><span class="t m">Mobile number</span><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t m">Code</span><div class="otp"><i class="on"></i><i class="on"></i><i></i><i></i></div></div><span class="bt ">Continue</span></div><div class="nv"></div></div><p class="wf-lbl">1 · verify phone</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Quick profile</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><span class="t m">Name</span><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t m">Business / village</span><span class="ln " style="--w:50%"></span></div><div class="bx "><div class="rw"><span class="t m">Location</span><span class="pl g">Auto</span></div></div><span class="bt ">Done</span></div><div class="nv"></div></div><p class="wf-lbl">2 · quick profile</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Retailers near you</span><span class="ln " style="--w:45%"></span></div><div class="bd"><div class="tg"><span class="on">All</span><span>Following</span><span>New</span></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:50%"></span><span class="pl g">Following</span></div></div><div class="bx hl"><div class="rw"><span class="av"></span><span class="ln " style="--w:55%"></span><span class="bt ">Follow</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:45%"></span><span class="bt ">Follow</span></div></div></div><div class="nv"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl">3 · <i>Discover retailers</i></p></div></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>Three onboardings, one shape.</b> Each ends on the screen that shows that person why the app is useful.</figcaption></figure>
+    <div class="indent principles">
+      <div><h4>Phone number as identity</h4><p>One-time-password sign-in instead of passwords, for people who mainly know their phone number.</p></div>
+      <div><h4>Value before paperwork</h4><p>Only the essentials up front; the rest of the profile is unlocked later with completion nudges.</p></div>
+      <div><h4>New and returning differ</h4><p>On the dealer app, first-time users get a map-first, welcoming view; returning users go straight to the list they work from.</p></div>
+    </div>
+  </section>
+
+  <!-- Invites -->
+  <section class="wrap block" id="invites" aria-labelledby="h-inv">
+    <div class="sec-top">
+      <p class="label">Flow 02 · Invites</p>
+      <div class="measure">
+        <h2 id="h-inv">Invite people who aren’t on the app yet</h2>
+        <div class="body"><p>A network app is empty until both sides are on it. So anyone could add their existing contacts, from the phone book or by hand, whether or not those contacts had the app. People already on the app get a notification; everyone else gets an SMS with a download link, and the invitation waits for them when they arrive.</p></div>
+      </div>
+    </div>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: the invite loop on mobile. Add contacts; the invitee gets a notification if they have the app or an SMS with a download link if not; they review the profile and accept; the inviter sees them as accepted."><div class="wf-scroll"><div style="min-width:720px"><div class="wf-row" style="grid-template-columns:minmax(0,1fr) 28px minmax(0,.8fr) 28px minmax(0,1fr) 28px minmax(0,1fr);align-items:center"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Add contacts</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="ck on"></span><span class="ln " style="--w:60%"></span></div></div><div class="bx "><div class="rw"><span class="ck on"></span><span class="ln " style="--w:50%"></span></div></div><div class="bx "><div class="rw"><span class="ck"></span><span class="ln " style="--w:55%"></span></div></div><span class="bt ">Invite 2</span></div><div class="nv"></div></div><p class="wf-lbl">1 · add a contact</p></div><span class="arrow-r" style="align-self:center"><svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M0 7h24M19 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="fork2"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div></div><div class="bd"><div style="display:grid;gap:6px;padding-top:30px"><div class="bx hl"><div class="rw"><span class="av" style="background:var(--accent)"></span><div class="cl" style="flex:1"><span class="t s">Wants to connect</span><span class="ln " style="--w:80%"></span></div></div></div></div></div><div class="nv"></div></div><p class="wf-lbl">on the app · notification</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Messages</span><span class="ln " style="--w:30%"></span></div><div class="bd"><div class="bx hl"><span class="t m">Invited you to connect. Download the app:</span><span class="t s">link</span></div><span class="t m">Invite waits after install</span></div><div class="nv"></div></div><p class="wf-lbl">not on the app · SMS</p></div></div><span class="arrow-r" style="align-self:center"><svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M0 7h24M19 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Profile</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div style="display:grid;justify-items:center;gap:5px;padding:6px 0"><span class="av" style="width:34px;height:34px;border-radius:10px"></span><span class="ln d" style="--w:50%"></span><span class="ln " style="--w:35%"></span></div><div class="bx "><span class="ln " style="--w:70%"></span><span class="ln " style="--w:50%"></span></div><div class="g2"><span class="bt o">Later</span><span class="bt a">Accept</span></div></div><div class="nv"></div></div><p class="wf-lbl">3 · review &amp; accept</p></div><span class="arrow-r" style="align-self:center"><svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M0 7h24M19 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">My network</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="bx hl"><div class="rw"><span class="av"></span><span class="ln " style="--w:50%"></span><span class="pl g">Accepted</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:55%"></span><span class="pl w">Pending</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:45%"></span><span class="pl g">Accepted</span></div></div></div><div class="nv"></div></div><p class="wf-lbl">4 · inviter notified</p></div></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>The invite loop.</b> The same pattern works dealer→retailer, retailer→dealer, farmer→farmer and farmer→retailer.</figcaption></figure>
+    <div class="indent principles">
+      <div><h4>Reach beyond the app</h4><p>SMS carries the invitation to people who haven’t installed anything yet.</p></div>
+      <div><h4>Consent on both sides</h4><p>Nobody joins a network without reviewing the profile and accepting.</p></div>
+      <div><h4>Show who’s reachable</h4><p>When sending a message, the recipient list shows who is on the app and who will get an SMS.</p></div>
+    </div>
+    <figure class="art-ph"><img src="../assets/farmart-app.webp" alt="FarMart App project artwork" style="object-position:55% 55%" loading="lazy" width="1672" height="941"><span class="chip-ph">Artwork placeholder</span></figure>
+  </section>
+
+  <!-- Transactions -->
+  <section class="wrap block" id="transactions" aria-labelledby="h-txn">
+    <div class="sec-top">
+      <p class="label">Flow 03 · Transactions</p>
+      <div class="measure">
+        <h2 id="h-txn">Structured messages instead of open chat</h2>
+        <div class="body"><p>The team considered free chat between dealers and retailers, then chose structured messages instead. A promotion, an enquiry, a quotation and a purchase order each became a short template. That simplified the process, let quotations from several dealers line up against one enquiry, and turned an accepted price straight into an order.</p></div>
+      </div>
+    </div>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: five phone screens from enquiry to purchase order, alternating dealer and retailer apps: promote, enquire to several dealers, quote with price, delivery and terms, compare quotations and choose a price, and confirm or decline the purchase order."><div class="wf-scroll"><div style="min-width:760px"><div class="wf-row" style="grid-template-columns:repeat(5,minmax(0,1fr));"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Promote</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><span class="ln d" style="--w:40%"></span><div class="map" style="height:30px;background:var(--g1)"></div><span class="ln " style="--w:60%"></span></div><div class="bx "><div class="rw"><span class="t m">To</span><span class="pl a">All retailers</span></div></div><span class="bt ">Send</span></div><div class="nv"></div></div><p class="wf-lbl"><i>1</i> · Promote · <b>Dealer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">New enquiry</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><span class="t m">Product</span><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t m">Quantity</span><span class="ln " style="--w:30%"></span></div><div class="bx hl"><div class="rw"><span class="t m">Send to</span><span class="pl a">3 dealers</span></div></div><span class="bt ">Send</span></div><div class="nv"></div></div><p class="wf-lbl"><i>2</i> · Enquire · <b>Retailer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Quotation</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx hl"><span class="t m">Price range</span><span class="ln " style="--w:50%"></span></div><div class="bx "><span class="t m">Delivery</span><span class="ln " style="--w:40%"></span></div><div class="bx "><span class="t m">Terms</span><span class="ln " style="--w:55%"></span></div><span class="bt ">Send quote</span></div><div class="nv"></div></div><p class="wf-lbl"><i>3</i> · Quote · <b>Dealer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Quotations</span><span class="ln " style="--w:40%"></span></div><div class="bd"><div class="bx hl"><div class="rw"><span class="t s">Dealer A</span><span class="pl a">New</span></div><span class="ln " style="--w:50%"></span><span class="bt ">Choose price</span></div><div class="bx "><div class="rw"><span class="t s">Dealer B</span></div><span class="ln " style="--w:45%"></span><span class="bt o">Choose price</span></div></div><div class="nv"></div></div><p class="wf-lbl"><i>4</i> · Order · <b>Retailer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Purchase order</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><span class="ln " style="--w:70%"></span><span class="ln " style="--w:50%"></span><span class="ln " style="--w:60%"></span></div><div class="g2"><span class="bt o">Decline</span><span class="bt a">Confirm</span></div><span class="t m">Decline asks for a reason</span></div><div class="nv"></div></div><p class="wf-lbl"><i>5</i> · Confirm · <b>Dealer</b></p></div></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>From enquiry to purchase order.</b> A call or WhatsApp is always one tap away for anyone who prefers to talk.</figcaption></figure>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: six phone screens from order to closure: dealer marks dispatched, retailer confirms delivery or reports why not, retailer rates the dealer, dealer confirms payment or a new date, dealer rates the retailer, and the order closes."><div class="wf-scroll"><div style="min-width:860px"><div class="wf-row" style="grid-template-columns:repeat(6,minmax(0,1fr));"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="t s">Status</span><span class="pl g">Confirmed</span></div></div><span class="bt a">Mark out for delivery</span></div><div class="nv"></div></div><p class="wf-lbl"><i>1</i> · Dispatched · <b>Dealer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="t s">Status</span><span class="pl w">On the way</span></div></div><div class="g2"><span class="bt o">Not delivered</span><span class="bt a">Delivered</span></div><span class="t m">“Not delivered” asks why</span></div><div class="nv"></div></div><p class="wf-lbl"><i>2</i> · Delivered? · <b>Retailer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Rate dealer</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx hl"><span class="stars">★★★★☆</span><span class="ln " style="--w:70%"></span></div><span class="bt ">Submit</span></div><div class="nv"></div></div><p class="wf-lbl"><i>3</i> · Rate dealer · <b>Retailer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Payment</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="t s">Due</span><span class="ln d" style="--w:25%"></span></div></div><div class="g2"><span class="bt o">Not yet</span><span class="bt a">Received</span></div><span class="t m">“Not yet” asks for a new date</span></div><div class="nv"></div></div><p class="wf-lbl"><i>4</i> · Paid? · <b>Dealer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Rate retailer</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx hl"><span class="stars">★★★★★</span><span class="ln " style="--w:60%"></span></div><span class="bt ">Submit</span></div><div class="nv"></div></div><p class="wf-lbl"><i>5</i> · Rate retailer · <b>Dealer</b></p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:35%"></span></div><div class="bd"><div class="bx hl"><div class="rw"><span class="t s">Status</span><span class="pl g">Closed</span></div></div><div class="bx "><span class="ln " style="--w:60%"></span><span class="ln " style="--w:40%"></span></div></div><div class="nv"></div></div><p class="wf-lbl"><i>6</i> · Closed · <b>Both</b></p></div></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>From order to closure.</b> Delivery and payment are confirmed by the person who would know, with ratings on both sides.</figcaption></figure>
+    <div class="indent principles">
+      <div><h4>Comparable offers</h4><p>Quotations from several dealers line up against the same enquiry, newest first.</p></div>
+      <div><h4>The right person confirms</h4><p>The retailer confirms delivery; the dealer confirms payment. Each step has one clear owner.</p></div>
+      <div><h4>Trust runs both ways</h4><p>Both sides rate each other, so reputation is earned in each direction.</p></div>
+    </div>
+  </section>
+
+  <!-- Retailer modes -->
+  <section class="wrap block" aria-labelledby="h-modes">
+    <div class="sec-top">
+      <p class="label">Pattern · Retailer app</p>
+      <div class="measure">
+        <h2 id="h-modes">One retailer, two directions</h2>
+        <div class="body"><p>The retailer buys from dealers and sells to farmers, often in the same hour. Rather than two separate apps, the retailer app was specified with two modes: one facing dealers (enquiries, quotations, orders) and one facing farmers (promotions, groups, feeds, orders), switched from a single control.</p></div>
+      </div>
+    </div>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: two retailer app phone screens with a mode switch at the top: the dealer-facing mode for enquiries, quotes and orders, and the farmer-facing mode for promotions, farmer groups, feed and farmer orders."><div class="wf-row" style="grid-template-columns:minmax(0,1fr) minmax(0,.5fr) minmax(0,1fr);max-width:620px;margin-inline:auto"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Retailer</span><div class="toggle2"><span class="on">Dealers</span><span>Farmers</span></div></div><div class="bd"><div class="bx "><div class="rw"><span class="t s">Enquiries</span><span class="pl a">2 quotes</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:50%"></span><span class="bt ">Enquire</span></div></div><div class="bx "><div class="rw"><span class="av"></span><span class="ln " style="--w:45%"></span><span class="bt ">Enquire</span></div></div><div class="bx "><span class="t s">My orders</span><span class="ln " style="--w:60%"></span></div></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><b>Dealer-facing mode</b> · buy</p></div><div class="wf-cell" style="align-self:center"><span class="t m" style="font-family:var(--f-mono);text-align:center">one switch,<br>one identity</span></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Retailer</span><div class="toggle2"><span>Dealers</span><span class="on">Farmers</span></div></div><div class="bd"><div class="g2"><div class="bx "><span class="ln " style="--w:70%"></span></div><div class="bx "><span class="ln " style="--w:60%"></span></div></div><div class="bx "><div class="rw"><span class="t s">Farmer groups</span><span class="pl a">4</span></div></div><div class="bx "><span class="t s">Feed</span><span class="ln " style="--w:70%"></span><span class="ln " style="--w:50%"></span></div><div class="bx "><span class="t s">Farmer orders</span><span class="ln " style="--w:55%"></span></div></div><div class="nv"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><b>Farmer-facing mode</b> · sell</p></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>Two modes, one identity.</b></figcaption></figure>
+  </section>
+
+  <!-- Collection -->
+  <section class="wrap block" id="collection" aria-labelledby="h-col">
+    <div class="sec-top">
+      <p class="label">Flow 04 · Produce collection</p>
+      <div class="measure">
+        <h2 id="h-col">The same network, running the other way</h2>
+        <div class="body"><p>Inputs flow from dealers to farmers. Produce flows back. A collection module in the retailer app let FarMart use its retailer network to gather produce from farmers for buyers, with field staff checking quality before pickup.</p></div>
+      </div>
+    </div>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept, seven steps across web and mobile: a buyer request on the website, FarMart ops creating an order on web, retailers responding on mobile, ops allocating on web, retailers recording collection on mobile, field staff checking quality on mobile, and ops approving pickup on web."><div class="wf-scroll"><div style="min-width:980px"><div class="wf-row" style="grid-template-columns:repeat(7,minmax(0,1fr));align-items:end"><div class="wf-cell"><div class="wf-desk" aria-hidden="true"><div class="cb"><i></i><i></i><i></i><span></span></div><div class="bd"><div class="sd"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mn"><span class="t s">Buyer request</span><div class="bx "><span class="ln " style="--w:70%"></span><span class="ln " style="--w:50%"></span></div><span class="bt ">Submit</span></div></div></div><p class="wf-lbl"><i>1</i> · Buyer need · <b>website</b> · web</p></div><div class="wf-cell"><div class="wf-desk" aria-hidden="true"><div class="cb"><i></i><i></i><i></i><span></span></div><div class="bd"><div class="sd"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mn"><span class="t s">New order</span><div class="bx "><span class="ln " style="--w:60%"></span><span class="ln " style="--w:40%"></span></div><div class="bx "><div class="rw"><span class="t m">QC steps</span><span class="pl a">Crop template</span></div></div></div></div></div><p class="wf-lbl"><i>2</i> · Order · <b>FarMart ops</b> · web</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Request</span><span class="ln " style="--w:30%"></span></div><div class="bd"><div class="bx "><span class="ln " style="--w:60%"></span></div><div class="bx hl"><span class="t m">Qty · date · price</span><span class="ln " style="--w:50%"></span></div><span class="bt ">Respond</span></div><div class="nv"></div></div><p class="wf-lbl"><i>3</i> · Respond · <b>retailer</b> · mobile</p></div><div class="wf-cell"><div class="wf-desk" aria-hidden="true"><div class="cb"><i></i><i></i><i></i><span></span></div><div class="bd"><div class="sd"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mn"><span class="t s">Allocate</span><div class="bx "><div class="rw"><span class="ln " style="--w:40%"></span><span class="pl a">Qty</span></div></div><div class="bx "><div class="rw"><span class="ln " style="--w:35%"></span><span class="pl a">Qty</span></div></div></div></div></div><p class="wf-lbl"><i>4</i> · Allocate · <b>FarMart ops</b> · web</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Collection</span><span class="ln " style="--w:30%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="ln " style="--w:45%"></span><span class="ln d" style="--w:15%"></span></div></div><div class="bx "><div class="rw"><span class="ln " style="--w:40%"></span><span class="ln d" style="--w:15%"></span></div></div><span class="bt a">Collection done</span></div><div class="nv"></div></div><p class="wf-lbl"><i>5</i> · Collect · <b>retailer</b> · mobile</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Quality check</span><span class="ln " style="--w:30%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="ok">✓</span><span class="ln " style="--w:50%"></span></div></div><div class="bx "><div class="rw"><span class="ok">✓</span><span class="ln " style="--w:45%"></span></div></div><span class="bt ">Send for approval</span></div><div class="nv"></div></div><p class="wf-lbl"><i>6</i> · Check · <b>field staff</b> · mobile</p></div><div class="wf-cell"><div class="wf-desk" aria-hidden="true"><div class="cb"><i></i><i></i><i></i><span></span></div><div class="bd"><div class="sd"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mn"><span class="t s">Pickup</span><div class="bx "><div class="rw"><span class="ln " style="--w:45%"></span><span class="pl g">Approved</span></div></div><div class="bx "><div class="rw"><span class="ln " style="--w:40%"></span><span class="pl g">Closed</span></div></div></div></div></div><p class="wf-lbl"><i>7</i> · Pickup · <b>FarMart ops</b> · web</p></div></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · web + mobile</span><b>Produce collection across web and mobile.</b> Stages only; FarMart’s internal operating rules aren’t shown.</figcaption></figure>
+  </section>
+
+  <!-- Screens (placeholders) -->
+  <section class="wrap block" id="screens" aria-labelledby="h-screens">
+    <div class="sec-top">
+      <p class="label">Screens</p>
+      <div class="measure">
+        <h2 id="h-screens">Screens coming soon</h2>
+        <div class="body"><p>Product screens will appear here once FarMart approves sharing them. Until then, project artwork stands in.</p></div>
+      </div>
+    </div>
+    <div class="art-grid"><figure class="art-ph"><img src="../assets/farmart-app.webp" alt="FarMart App project artwork" style="object-position:50% 45%" loading="lazy" width="1672" height="941"><span class="chip-ph">Artwork placeholder</span></figure><figure class="art-ph"><img src="../assets/supply-chain.webp" alt="Supply chain ecosystem artwork" style="object-position:25% 60%" loading="lazy" width="1672" height="941"><span class="chip-ph">Artwork placeholder</span></figure></div>
+  </section>
+
+  <!-- Ecosystem -->
+  <section class="wrap block" id="ecosystem" aria-labelledby="h-eco">
+    <div class="sec-top">
+      <p class="label">Ecosystem</p>
+      <div class="measure">
+        <h2 id="h-eco">Where the FarMart products began</h2>
+        <div class="body"><p>The App family is where I learned how FarMart’s trade worked. That grounding carried into FarMartOS, the enterprise system for running trades end to end, and FarMart PRO, its operational companion on mobile.</p></div>
+      </div>
+    </div>
+    <div class="eco">
+      <article><p class="tag">Web · flagship</p><h3>FarMartOS</h3><p>The desktop control room for sales, procurement, logistics, risk and finance, from sales order to closure.</p><a class="connect" href="farmart-os.html" style="justify-self:start;margin-top:4px">Read the case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+      <article><p class="tag">Mobile · operations</p><h3>FarMart PRO</h3><p>Status, balances and permitted actions for people executing trades on site.</p><a class="connect" href="farmart-pro.html" style="justify-self:start;margin-top:4px;background:#fff;color:var(--ink);border:1px solid var(--line)">Read the PRO page <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+      <article class="lead"><p class="tag">Mobile · earlier product · you are here</p><h3>FarMart App</h3><p>Dealer, retailer and farmer apps: onboarding, invites, enquiries, orders and produce collection.</p></article>
+    </div>
+  </section>
+
+  <!-- Still documenting -->
+  <section class="wrap block" aria-labelledby="h-open">
+    <div class="sec-top">
+      <p class="label">Still documenting</p>
+      <div class="measure">
+        <h2 id="h-open">What this page doesn’t claim yet</h2>
+        <div class="body">
+          <p>The flows above follow FarMart’s 2020 product specifications, and include only flows that are specified end to end. Payments, delivery tracking, subscriptions and feed ranking were parked or undecided at the time, so they aren’t shown. Which flows shipped, and exactly which screens I designed in each app, are still being confirmed. There are no usage numbers on this page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="About the visuals">
+    <p class="note"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7v4M8 5v.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Diagrams on this page are conceptual and made for this portfolio. They show flows and design approach, not FarMart’s screens, data, message copy or internal business rules. FarMart was a multi-team product: product, engineering and operations colleagues shaped this work with me.</span></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-cta">
+      <h2>Building for a network that isn’t online yet? <em>Get in touch.</em></h2>
+      <div class="btns">
+        <a class="btn dark" href="https://www.linkedin.com/in/jai-singh-639511173/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn soft" href="../index.html#work">Back to all work</a>
+      </div>
+    </div>
+    <div class="foot-bar"><span><b>Jai Singh<em>.</em></b> Product Systems Designer · Chandigarh, India</span><span>© 2026 Jai Singh</span></div>
+  </div>
+</footer>
+</body>
+</html>

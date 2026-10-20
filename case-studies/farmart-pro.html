@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FarMart PRO Case Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="FarMart PRO: operational mobile design for people executing trades on site, connected to FarMartOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/base.css">
+<style>
+.eco article .connect { font-size: 13px; padding: 10px 14px; }
+@media (max-width: 520px) { .split .dg > div[style] { grid-template-columns: 1fr !important; } .split .dg-mob { max-width: 220px !important; justify-self: center; } }
+</style>
+<link rel="stylesheet" href="../css/mockups.css">
+<style>
+.hero-art { border-radius: 20px; overflow: hidden; background: #f4f4f5; aspect-ratio: 1191 / 669; max-width: 100%; }
+.hero-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+</style>
+<link rel="stylesheet" href="../css/hero-mockup.css">
+<link rel="stylesheet" href="../css/artwork-placeholders.css">
+<link rel="stylesheet" href="../css/platform-wireframes.css">
+<link rel="stylesheet" href="../css/responsive-fixes.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html#work"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Jai Singh · Work</a>
+    <div class="right">
+      <nav class="toc" aria-label="On this page">
+        <a href="#context">Context</a>
+        <a href="#principles">Principles</a>
+        <a href="#pattern">Action pattern</a>
+        <a href="#decisions">Decisions</a>
+        <a href="#screens">Screens</a>
+        <a href="#ecosystem">Ecosystem</a>
+      </nav>
+      <a class="connect" href="https://www.linkedin.com/in/jai-singh-639511173/" target="_blank" rel="noopener noreferrer">Let’s Connect</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="label">Case study · Operational mobile · 2022–2026</p>
+    <h1>FarMart<em>PRO</em></h1>
+    <p class="lede">Designing the mobile side of FarMart’s operations, so people executing trades on site can see what’s pending and take the next permitted action, in step with the enterprise system.</p>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Product design &amp; information architecture</dd></div>
+      <div><dt>Company</dt><dd>FarMart, India</dd></div>
+      <div><dt>Ownership</dt><dd>Nov 2022 – Sep 2026<small>alongside FarMartOS</small></dd></div>
+      <div><dt>Surface</dt><dd>Mobile, operations<small>companion to FarMartOS (web)</small></dd></div>
+      <div><dt>Scale</dt><dd>Part of a system with 250+ active users<small>team-reported, shared with OS</small></dd></div>
+    </dl>
+    <figure class="hero-art"><img src="../assets/farmart-pro.webp" alt="FarMart PRO project artwork: two phones beside a truck and warehouse" width="1672" height="941"></figure>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: the same trade on a FarMartOS web screen with full context and on a FarMart PRO phone screen showing status, balances and the next permitted action."><div class="wf-scroll"><div style="min-width:640px"><div class="wf-row" style="grid-template-columns:minmax(0,2.3fr) minmax(0,.7fr) minmax(0,1fr);"><div class="wf-cell"><div class="wf-desk" aria-hidden="true"><div class="cb"><i></i><i></i><i></i><span></span></div><div class="bd"><div class="sd"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mn"><div class="rw"><div class="cl"><span class="t ">Sample trade</span><span class="ln " style="--w:40%"></span></div><span class="pl w">In delivery</span></div><div class="bx ink "><div class="rw"><span class="t ">Next action · owner</span><span class="bt a">Act</span></div></div><div class="g3"><div class="bx "><span class="t s">Linked records</span><span class="ln " style="--w:80%"></span><span class="ln " style="--w:60%"></span><span class="ln " style="--w:70%"></span></div><div class="bx "><span class="t s">Operational</span><span class="ln " style="--w:70%"></span><span class="ln " style="--w:50%"></span><span class="ln " style="--w:65%"></span></div><div class="bx "><span class="t s">Money</span><span class="ln " style="--w:60%"></span><span class="ln r" style="--w:45%"></span><span class="ln d" style="--w:70%"></span></div></div><div class="bx "><span class="t s">History</span><span class="ln " style="--w:85%"></span><span class="ln " style="--w:60%"></span></div></div></div></div><p class="wf-lbl"><b>FarMartOS</b> · web · full context</p></div><div class="wf-cell" style="align-self:center"><span class="t s" style="font:500 10.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)">Shared record</span><span class="arrow-r"><svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M0 7h24M19 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="t m" style="text-align:center">same names, order, state</span></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:55%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="t s">Status</span><span class="pl w">On the way</span></div></div><div class="bx "><div class="rw"><span class="t s">Party A</span><span class="pl a">Pending</span></div><span class="ln " style="--w:70%"></span><span class="ln " style="--w:50%"></span><div class="g2"><span class="bt o">Adjust</span><span class="bt ">Request</span></div></div><div class="bx "><div class="rw"><span class="t s">Party B</span><span class="pl g">Settled</span></div><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="t s">Tax</span><span class="ln " style="--w:50%"></span></div></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><b>FarMart PRO</b> · mobile · next action</p></div></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · web + mobile</span><b>One trade, two depths.</b> PRO isn’t a smaller OS; it’s the same record cut to the task.</figcaption></figure>
+  </div>
+
+  <!-- Context -->
+  <section class="wrap block" id="context" aria-labelledby="h-ctx">
+    <div class="sec-top">
+      <p class="label">Context</p>
+      <div class="measure">
+        <h2 id="h-ctx">The trade doesn’t wait at a desk</h2>
+        <div class="body">
+          <p>Much of a trade happens away from a desk: at loading points, during unloading, between calls with suppliers and transporters. The people doing that work need the trade’s current state and a way to act on it, from a phone.</p>
+          <p>The risk with operational mobile is drift. If the phone shows a different picture from the enterprise system, people act on stale information and finance has to untangle it later. I designed FarMart PRO in parallel with FarMartOS so both products tell the same story about the same trade.</p>
+        </div>
+      </div>
+    </div>
+    <div class="indent">
+      <div class="three">
+        <div><h3>Little time, little screen</h3><p>Someone on site needs the answer in seconds: what’s pending, and what can I do now?</p></div>
+        <div><h3>Money moves from the field</h3><p>Payment requests and adjustments start where the work happens, so they need to be clear and attributable.</p></div>
+        <div><h3>One truth across devices</h3><p>Whatever the phone shows has to match the OS, or trust in both products breaks.</p></div>
+      </div>
+      <p class="question"><span class="label">Design question</span>How might we give people on site the context and actions they need, without the phone ever disagreeing with the enterprise system?</p>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="wrap block" id="principles" aria-labelledby="h-pr">
+    <div class="sec-top">
+      <p class="label">Principles</p>
+      <div class="measure">
+        <h2 id="h-pr">Operational mobile isn’t a scaled-down desktop</h2>
+        <div class="body"><p>Copying the OS onto a phone would have meant dense tables nobody can read in a warehouse. Instead, I designed PRO around four principles.</p></div>
+      </div>
+    </div>
+    <div class="indent tradeoffs">
+      <div><h4>Task context first</h4><p>Open on the state of the trade and what’s pending, not on every field the record holds.</p></div>
+      <div><h4>Quick, permitted actions</h4><p>Show only the actions the person and the trade’s state allow, one tap away.</p></div>
+      <div><h4>Progressive disclosure</h4><p>Totals first; the breakdown behind any number is a tap deeper.</p></div>
+      <div><h4>Continuity across devices</h4><p>Same names, same order, same state as the OS, so field and finance can talk about one record.</p></div>
+    </div>
+  </section>
+
+  <!-- Action pattern -->
+  <section class="wrap block" id="pattern" aria-labelledby="h-pat">
+    <div class="sec-top">
+      <p class="label">Action pattern</p>
+      <div class="measure">
+        <h2 id="h-pat">Every action follows the same loop</h2>
+        <div class="body"><p>Whether someone requests a payment or records an adjustment, the interaction follows one predictable loop. Learning it once means every new action feels familiar.</p></div>
+      </div>
+    </div>
+    <figure class="figure"><div class="wf" role="img" aria-label="Concept: five FarMart PRO phone screens for one action loop: inspect what is pending, choose a permitted action, provide amount, reason and evidence in a sheet, see a pending confirmation, and return to the updated order."><div class="wf-scroll"><div style="min-width:760px"><div class="wf-row" style="grid-template-columns:repeat(5, minmax(0,1fr));"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:50%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="t s">Status</span><span class="pl w">On the way</span></div></div><div class="bx hl"><div class="rw"><span class="t s">Pending</span><span class="ln d" style="--w:30%"></span></div></div><div class="bx "><span class="ln " style="--w:60%"></span><span class="ln " style="--w:40%"></span></div></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><i>1</i> · Inspect</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:50%"></span></div><div class="bd"><div class="bx hl"><div class="rw"><span class="t s">Party A</span><span class="pl a">Pending</span></div><span class="ln " style="--w:60%"></span><div class="g2"><span class="bt o">Adjust</span><span class="bt a">Request</span></div></div><div class="bx "><span class="ln " style="--w:60%"></span></div></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><i>2</i> · Act</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:50%"></span></div><div class="bd"><div class="bx "><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="ln " style="--w:50%"></span></div></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div><div class="dim"><div class="sheet"><span class="t ">Request payment</span><div class="bx "><span class="t m">Amount</span><span class="ln " style="--w:40%"></span></div><div class="bx "><span class="t m">Reason</span><span class="ln " style="--w:60%"></span></div><div class="bx hl"><div class="rw"><span class="t m">Evidence</span><span class="t s">+ Attach</span></div></div><span class="bt ">Send</span></div></div></div><p class="wf-lbl"><i>3</i> · Provide</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:50%"></span></div><div class="bd"><div class="bx hl"><div style="display:grid;justify-items:center;gap:6px;padding:10px 0"><span class="no" style="width:26px;height:26px;font-size:12px">⏱</span><span class="t ">Request sent</span><span class="pl w">Pending</span></div></div><span class="bt ">Back to order</span></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><i>4</i> · Confirm</p></div><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:50%"></span></div><div class="bd"><div class="bx "><div class="rw"><span class="t s">Status</span><span class="pl w">On the way</span></div></div><div class="bx hl"><div class="rw"><span class="t s">Party A</span><span class="pl w">Requested</span></div><span class="ln " style="--w:60%"></span></div><div class="bx "><span class="ln " style="--w:60%"></span></div></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><i>5</i> · Return</p></div></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>The PRO action loop.</b> A design pattern, not a map of FarMart’s screens.</figcaption></figure>
+  </section>
+
+  <!-- Decisions -->
+  <section class="wrap block" id="decisions" aria-labelledby="h-dec">
+    <div class="sec-top">
+      <p class="label">Decisions</p>
+      <div class="measure">
+        <h2 id="h-dec">What I designed into PRO</h2>
+        <div class="body"><p>Four decisions carried most of the weight. Each one ties the phone back to the same record people see on the OS.</p></div>
+      </div>
+    </div>
+    <div class="split" style="margin-top:44px">
+      <ol class="decisions">
+        <li><h4>Order context in one place</h4><p>A single order view brings together its documents, payments and delivery details, so nobody switches apps to answer a question on a call.</p></li>
+        <li><h4>A separate balance for each party</h4><p>Each counterparty, and tax, has its own balance and payment flow, in the same structure as the OS, instead of one blended total.</p></li>
+        <li><h4>Attributed adjustments</h4><p>Payment requests and adjustments start from the phone, and every adjustment shows who raised it and why.</p></li>
+        <li><h4>Actions follow the trade’s state</h4><p>When a trade’s state changes on the OS, PRO reflects it, so the phone never offers an action the system will refuse.</p></li>
+      </ol>
+      <figure class="figure" style="margin-top:0"><div class="wf" role="img" aria-label="Concept: a FarMart PRO phone order view numbered 1 to 3: status first, one balance card per party, and an adjustment that opens to who raised it and why."><div style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:20px;align-items:center"><div class="wf-cell"><div class="wf-ph" aria-hidden="true"><div class="sb"></div><div class="hd"><span class="t ">Order</span><span class="ln " style="--w:50%"></span></div><div class="bd"><div class="bx "><div class="rw"><span style="display:flex;gap:6px;align-items:center"><span class="num">1</span><span class="t s">Status</span></span><span class="pl w">On the way</span></div></div><div class="bx "><div class="rw"><span style="display:flex;gap:6px;align-items:center"><span class="num">2</span><span class="t s">Party A</span></span><span class="pl a">Pending</span></div><span class="ln " style="--w:60%"></span></div><div class="bx "><div class="rw"><span style="display:flex;gap:6px;align-items:center"><span class="num">2</span><span class="t s">Party B</span></span><span class="pl g">Settled</span></div><span class="ln " style="--w:50%"></span></div><div class="bx red"><div class="rw"><span style="display:flex;gap:6px;align-items:center"><span class="num">3</span><span class="t s">Adjustment</span></span><span class="ln r" style="--w:20%"></span></div><span class="t m">raised by · reason</span></div><div class="g2"><span class="bt o">Adjust</span><span class="bt ">Request</span></div></div><div class="nv"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></div></div><p class="wf-lbl"><b>FarMart PRO</b> · mobile</p></div><div style="display:grid;gap:12px;align-content:center"><div class="bx "><span class="ann" data-n="1">Status first</span><span class="t m">Where the trade is, before anything else.</span></div><div class="bx "><span class="ann" data-n="2">One card per party</span><span class="t m">Each balance reads on its own.</span></div><div class="bx hl"><span class="ann" data-n="3">Tap for the why</span><span class="t m">Every adjustment opens to its reason.</span></div></div></div></div><figcaption class="wf-cap"><span class="ctag">Concept · mobile</span><b>Anatomy of a PRO order view.</b> Generic labels; not a FarMart screen.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- Screens (placeholders) -->
+  <section class="wrap block" id="screens" aria-labelledby="h-screens">
+    <div class="sec-top">
+      <p class="label">Screens</p>
+      <div class="measure">
+        <h2 id="h-screens">Screens coming soon</h2>
+        <div class="body"><p>Product screens will appear here once FarMart approves sharing them. Until then, project artwork stands in.</p></div>
+      </div>
+    </div>
+    <div class="art-grid"><figure class="art-ph"><img src="../assets/farmart-pro.webp" alt="FarMart PRO project artwork" style="object-position:50% 45%" loading="lazy" width="1672" height="941"><span class="chip-ph">Artwork placeholder</span></figure><figure class="art-ph"><img src="../assets/supply-chain.webp" alt="Supply chain ecosystem artwork" style="object-position:35% 55%" loading="lazy" width="1672" height="941"><span class="chip-ph">Artwork placeholder</span></figure></div>
+  </section>
+
+  <!-- Edge cases -->
+  <section class="wrap block" aria-labelledby="h-edge">
+    <div class="sec-top">
+      <p class="label">Hard cases</p>
+      <div class="measure">
+        <h2 id="h-edge">What a field app has to survive</h2>
+        <div class="body"><p>The happy path is the easy part. These are the situations an operational app has to handle gracefully. Documenting exactly how PRO handles each one is still in progress, so I list them as design considerations, not shipped behaviour.</p></div>
+      </div>
+    </div>
+    <div class="indent stack">
+      <div><span class="n">01</span><b>Slow or no network</b><span>Clear state while an action is waiting to go through</span></div>
+      <div><span class="n">02</span><b>Double taps</b><span>Never create the same request twice</span></div>
+      <div><span class="n">03</span><b>Changed elsewhere</b><span>The trade moved on the OS while the phone was open</span></div>
+      <div><span class="n">04</span><b>Not allowed</b><span>Explain why an action is unavailable, and who can take it</span></div>
+      <div><span class="n">05</span><b>Missing evidence</b><span>Say exactly which input or document is still needed</span></div>
+    </div>
+    <figure class="art-ph"><img src="../assets/farmart-pro.webp" alt="FarMart PRO project artwork" style="object-position:40% 60%" loading="lazy" width="1672" height="941"><span class="chip-ph">Artwork placeholder</span></figure>
+  </section>
+
+  <!-- Ecosystem -->
+  <section class="wrap block" id="ecosystem" aria-labelledby="h-eco">
+    <div class="sec-top">
+      <p class="label">Ecosystem</p>
+      <div class="measure">
+        <h2 id="h-eco">One of three connected products</h2>
+        <div class="body"><p>PRO sits between the enterprise system and the work on the ground. Its value comes from staying in step with FarMartOS.</p></div>
+      </div>
+    </div>
+    <div class="eco">
+      <article><p class="tag">Web · flagship</p><h3>FarMartOS</h3><p>The desktop control room for sales, procurement, logistics, risk and finance, from sales order to closure.</p><a class="connect" href="farmart-os.html" style="justify-self:start;margin-top:4px">Read the case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+      <article class="lead"><p class="tag">Mobile · operations · you are here</p><h3>FarMart PRO</h3><p>Status, balances and permitted actions for people executing trades on site.</p></article>
+      <article><p class="tag">Mobile · earlier product</p><h3>FarMart App</h3><p>The earlier mobile apps where I first learned the trade: dealers, retailers and farmers in one network.</p><a class="connect" href="farmart-app.html" style="justify-self:start;margin-top:4px;background:#fff;color:var(--ink);border:1px solid var(--line)">Read the App page <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+    </div>
+  </section>
+
+  <!-- Still documenting -->
+  <section class="wrap block" aria-labelledby="h-open">
+    <div class="sec-top">
+      <p class="label">Still documenting</p>
+      <div class="measure">
+        <h2 id="h-open">What this page doesn’t claim yet</h2>
+        <div class="body">
+          <p>PRO’s full screen inventory, its navigation for each role, and its exact handoffs with the OS are still being documented, so they aren’t described here. There are no PRO-specific usage numbers: the 250+ active users figure covers the connected operational system, not PRO alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="About the visuals">
+    <p class="note"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7v4M8 5v.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Diagrams on this page are conceptual and made for this portfolio. They show my design approach, not FarMart’s screens, data or internal business rules. FarMart was a multi-team product: engineering, product and operations colleagues shaped this work with me.</span></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-cta">
+      <h2>Building tools for people on the move? <em>Get in touch.</em></h2>
+      <div class="btns">
+        <a class="btn dark" href="https://www.linkedin.com/in/jai-singh-639511173/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn soft" href="../index.html#work">Back to all work</a>
+      </div>
+    </div>
+    <div class="foot-bar"><span><b>Jai Singh<em>.</em></b> Product Systems Designer · Chandigarh, India</span><span>© 2026 Jai Singh</span></div>
+  </div>
+</footer>
+</body>
+</html>

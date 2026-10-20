@@ -1,0 +1,30 @@
+name: Portfolio validation
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: HTML Validation  Link Check  Build Check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: HTML Validation
+        run: python3 scripts/check_portfolio.py html
+      - name: Link Check
+        run: python3 scripts/check_portfolio.py links
+      - name: JavaScript syntax
+        run: |
+          for script in js/*.js; do
+            node --check "$script"
+          done
+      - name: Build Check
+        run: python3 scripts/check_portfolio.py build
