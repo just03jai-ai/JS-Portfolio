@@ -1,10 +1,18 @@
 # Repository architecture
 
-This document describes the result of the `refactor/portfolio-architecture`
-branch: a pure structural reorganization of a static, no-build HTML/CSS/JS
-site. **No visual design, typography, spacing, colors, or page behavior was
-changed.** Every change here is either a file move, a duplicate-code
-extraction, or a path update made necessary by a move.
+This document describes the structural reorganization of a static, no-build
+HTML/CSS/JS site and its targeted QA remediation. The structural work aims to
+preserve the existing design; the branch as a whole is **not behavior-identical
+to `main`**. Commit `51cff66` changes the homepage Work destination and removes
+the Visual Design galleries. The user explicitly approved retaining those changes;
+see [content-changes-pending-confirmation.md](content-changes-pending-confirmation.md).
+
+The first QA review found omitted hero rules, missing legacy URL entrypoints,
+and a responsive cascade discrepancy. The remediation restores the original
+hero declarations, adds small redirect documents, and preserves the original
+FarMartOS breakpoint behavior. Validation evidence and limitations are recorded
+in [qa-remediation.md](qa-remediation.md); source extraction alone is not proof
+of visual equivalence.
 
 ## Why this shape
 
@@ -25,6 +33,9 @@ extraction, or a path update made necessary by a move.
 /
 ├── index.html                  (stays at root — GitHub Pages entry point)
 ├── README.md
+├── .gitignore                  (ignores .DS_Store; existing files are preserved)
+├── cv.html, experience.html, projects.html       (legacy redirect documents)
+├── farmart-os.html, farmart-pro.html, farmart-app.html (legacy redirect documents)
 ├── assets/                     (unchanged — images, svgs, tools/, cv/)
 ├── pages/
 │   ├── cv.html
@@ -47,10 +58,13 @@ extraction, or a path update made necessary by a move.
 │   ├── home.js            (index.html's nav scroll-spy + reveal/count-up)
 │   ├── cv-download.js     (shared CV-download logic — index.html + pages/experience.html)
 │   ├── cv-page.js         (cv.html's own bespoke download script)
-│   └── projects-filter.js (pages/projects.html's filter buttons)
+│   ├── projects-filter.js (pages/projects.html's filter buttons)
+│   └── legacy-redirect.js (query/fragment-preserving legacy entrypoints)
 └── docs/
     ├── architecture.md    (this file)
-    └── design-system.md
+    ├── design-system.md
+    ├── content-changes-pending-confirmation.md
+    └── qa-remediation.md
 ```
 
 No `/components` directory was created. See "Deliberately not done" below.
@@ -68,11 +82,11 @@ No `/components` directory was created. See "Deliberately not done" below.
 
 `index.html` and `assets/` did not move.
 
-## CSS extraction — what was verified identical before touching it
+## CSS extraction and remediation
 
-Before extracting anything, every candidate block was diffed byte-for-byte
-across the files that appeared to share it. Only confirmed-identical blocks
-were pulled into `/css`:
+The extraction commit records duplicate-block checks for the following files.
+The later QA review nevertheless found missing rules and a cascade discrepancy;
+the original extraction checks did not establish rendered equivalence:
 
 | Shared file | Lines | Used by |
 |---|---|---|
@@ -86,15 +100,20 @@ were pulled into `/css`:
 That is roughly **654 lines**, previously duplicated 3–5× each (over 2,800
 duplicated lines total), now living in one place per block.
 
-**One real per-page override was found and preserved**, not erased:
-`farmart-os.html`'s hero-mockup block sized its own phone mockup slightly
-differently (`.hs-os .ph { width: 17% → 16%; right: 4% → 2%; bottom: -14% →
--20% }`). The shared file keeps the common value; `farmart-os.html` links it
-and then has a 3-line inline `<style>` immediately after that re-declares
-just that one selector. Cascade order guarantees this renders identically
-to the original.
+**FarMartOS has a page-specific override.** Its original desktop values are
+`.hs-os .ph { position: absolute; width: 16%; right: 2%; bottom: -20%; }`,
+with `width: 24%` at `max-width: 860px`. The page-level override loads after
+`hero-mockup.css`, so it repeats that original responsive width after its desktop
+rule to preserve the cascade. The selector currently has no matching markup;
+this repairs latent behavior rather than a visible phone component.
 
-**Everything else was left inline, deliberately.** Each page still carries
+**Hero artwork remains page-local.** All three case studies restore the exact
+`.hero-art` and `.hero-art img` declarations from `main` before loading
+`hero-mockup.css`. These two rules were accidentally omitted during extraction.
+They preserve the original radius, aspect ratio, maximum width, overflow clipping,
+image dimensions, and `object-fit: cover`. No new visual treatment was added.
+
+**Page-specific styles remain inline.** Each page still carries
 its own genuinely unique `<style>` blocks (e.g. the FarMartOS lifecycle
 diagram styles, the Experience-page timeline, the Projects-page filter
 grid) in exactly their original document position. This was a conscious
@@ -109,8 +128,9 @@ These two were never duplicated anywhere else (confirmed — their `:root`
 variable names don't even overlap with the shared system: `--white` /
 `--hero-1` / `--ghost` vs. `--bg` / `--paper` / `--band`). Their CSS was
 still externalized, to `css/home.css` and `css/cv.css` respectively, purely
-for consistency with the rest of the site — every page now loads its styles
-via `<link>` instead of mixing inline and external.
+for consistency with the rest of the site — every full portfolio page now loads
+its main styles via `<link>`, while page-specific rules and the original small HTML wrapper
+styles can remain inline.
 
 ## JavaScript extraction
 
@@ -154,6 +174,22 @@ made (no case-study page ever links to `experience.html`, `cv.html`, or
   `../case-studies/` or `../pages/`; links to pages in the *same* folder
   are unchanged (still bare filenames); links to `index.html` gained `../`.
 
+## Legacy URL compatibility
+
+The six original root-level filenames are small redirect documents, not copies
+of the page implementations. Each declares a relative `rel="canonical"` pointing
+to its corresponding new page, a visible fallback link, and a deferred shared
+`js/legacy-redirect.js` script. Relative targets resolve to the correct canonical
+page under either root hosting or a project prefix; they do not assume a domain.
+
+The script resolves the destination against the legacy document URL, preserves
+`location.search` and `location.hash`, and uses `location.replace` so Back does
+not return to a redirect entrypoint. Destinations are full pages and never redirect
+back. With JavaScript disabled, the visible link still reaches the full page;
+query/fragment preservation is provided by JavaScript and is not claimed for the
+no-JavaScript fallback. Static hosting serves these documents as HTTP 200, not
+server-side 301 redirects. No duplicate full-page implementations were introduced.
+
 ## Deliberately not done
 
 - **No `/components` folder.** The brief asked for one, but this is a
@@ -189,28 +225,16 @@ made (no case-study page ever links to `experience.html`, `cv.html`, or
 
 ## Validation performed
 
-This environment has no browser or visual-regression tooling available, so
-"compare screenshots before and after" (as literally requested) could not
-be done. In its place:
+The initial extraction relied on static inspection and local HTTP checks. Its
+claim that browser tooling was unavailable is superseded by the completed QA
+review and remediation validation using installed headless Chrome through Python
+Playwright. Tests use original `main`, the pre-remediation branch HEAD, and the
+remediated working tree. They cover all seven full pages at widths 1440, 768,
+and 390px, plus legacy redirects and functional interactions.
 
-1. **Tag-balance check** on every refactored file (open/close counts for
-   `html`, `head`, `body`, `style`, `script`, and every structural tag used)
-   — all balanced.
-2. **Full link-graph audit**: every `href`/`src` in every one of the 7 pages
-   was dumped and manually cross-checked against the new file locations.
-3. **Automated HTTP resolution check**: a local server was started at the
-   repo root and all 139 unique local `href`/`src` references across all 7
-   pages were resolved per-page and requested — all returned HTTP 200.
-4. **Line-by-line diff against pre-refactor backups** for the most heavily
-   edited files, filtered to just the `href=`/`src=` lines, to confirm every
-   changed line was an intended path update and nothing else was touched.
-
-What this does **not** catch: actual visual rendering, cascade-order bugs
-that don't show up as a broken link (none were found in this analysis, but
-a human/browser check is still the real confirmation), JS runtime behavior
-beyond "the file loads." **Please open the local preview
-(`python3 -m http.server 8000`) and click through all 7 pages, the CV
-download button on 3 pages, and the projects-page filters, before merging.**
+The current results, browser settings, meaningful differences, and untested
+surfaces are recorded in [qa-remediation.md](qa-remediation.md). Do not infer
+visual equivalence from valid resource paths or balanced HTML tags.
 
 ## Remaining issues / open items
 
@@ -220,9 +244,10 @@ download button on 3 pages, and the projects-page filters, before merging.**
   (see above) — future, separate, low-risk change.
 - `/components` was intentionally skipped — see above for the reasoning and
   the documented alternative.
-- No visual/screenshot regression test was possible in this environment —
-  a human pass over the local preview is the recommended final check before
-  merging.
+- The content/navigation changes in `51cff66` are approved intentional differences
+  from main; see the separate approval record.
+- Cross-browser, physical-device, and viewer-specific save-to-disk checks are
+  outside the recorded Chromium validation; see the QA report for limitations.
 
 ## Git
 
