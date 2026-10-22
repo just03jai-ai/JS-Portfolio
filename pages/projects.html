@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Jai Singh Projects</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="All projects by Jai Singh, Product Designer: FarMartOS, FarMart PRO, FarMart App case studies, personal projects and visual design work.">
+<meta name="description" content="All projects by Jai Singh, Product Designer: FarMartOS, FarMart PRO, FarMart App and Interface DS case studies, plus personal projects in development.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@600;700&family=Geist+Mono:wght@400;500&display=swap">
@@ -234,6 +234,7 @@ button[disabled] { opacity: .6; cursor: progress; }
 .vw { width: 100%; height: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 8px; padding: 16px; background: var(--paper); }
 .vw i { border-radius: 8px; display: block; }
 </style>
+<link rel="stylesheet" href="../css/projects.css">
 </head>
 <body>
 
@@ -254,26 +255,47 @@ button[disabled] { opacity: .6; cursor: progress; }
 <main>
   <div class="wrap ph">
     <p class="label">Work · 2018 – 2026</p>
-    <h1>All <em>projects</em></h1>
+    <h1>All projects</h1>
     <p class="lede">Enterprise systems, operational mobile and marketplace apps from six years at FarMart, plus the personal projects I’m building now.</p>
-    <div class="counts"><span><b>3</b>case studies</span><span><b>3</b>in development</span></div>
+    <div class="counts" aria-label="Project overview">
+      <span><b data-project-count="all">6</b>projects</span>
+      <span><b data-project-count="published">4</b>case studies available</span>
+      <span><b data-project-count="development">2</b>in development</span>
+    </div>
   </div>
 
-  <div class="filters" role="toolbar" aria-label="Filter projects">
+  <div class="filters" aria-label="Browse projects">
     <div class="wrap">
-      <button class="fbtn" type="button" data-filter="all" aria-pressed="true">All <b>6</b></button>
-      <button class="fbtn" type="button" data-filter="enterprise" aria-pressed="false">Enterprise · web <b>1</b></button>
-      <button class="fbtn" type="button" data-filter="mobile" aria-pressed="false">Mobile <b>2</b></button>
-      <button class="fbtn" type="button" data-filter="personal" aria-pressed="false">In development <b>3</b></button>
+      <div class="filter-row">
+        <span class="filter-label" id="focus-label">Project focus</span>
+        <div class="filter-options" role="group" aria-labelledby="focus-label">
+          <button class="fbtn" type="button" data-filter="all" aria-pressed="true">All projects <b>6</b></button>
+          <button class="fbtn" type="button" data-filter="enterprise" aria-pressed="false">Web platforms <b>1</b></button>
+          <button class="fbtn" type="button" data-filter="mobile" aria-pressed="false">Mobile products <b>2</b></button>
+          <button class="fbtn" type="button" data-filter="system" aria-pressed="false">Design systems <b>1</b></button>
+          <button class="fbtn" type="button" data-filter="workflow" aria-pressed="false">AI workflows <b>1</b></button>
+          <button class="fbtn" type="button" data-filter="governance" aria-pressed="false">AI governance <b>1</b></button>
+        </div>
+      </div>
+      <div class="filter-row status-row">
+        <span class="filter-label" id="availability-label">Case study</span>
+        <div class="filter-options" role="group" aria-labelledby="availability-label">
+          <button class="status-btn" type="button" data-status-filter="all" aria-pressed="true">All <b>6</b></button>
+          <button class="status-btn" type="button" data-status-filter="published" aria-pressed="false">Available <b>4</b></button>
+          <button class="status-btn" type="button" data-status-filter="development" aria-pressed="false">In development <b>2</b></button>
+        </div>
+        <p class="filter-result" role="status" aria-live="polite" aria-atomic="true" id="project-results">Showing 6 projects</p>
+      </div>
     </div>
   </div>
 
   <section class="wrap" data-group="farmart" aria-labelledby="h-eco">
+    <div class="grp" data-grp="case"><h2 id="h-eco">FarMart Project Case studies</h2><p>FarMart · 2020 – 2026</p></div>
     <div class="feat" data-cat="enterprise mobile">
       <div class="art"><img src="../assets/supply-chain.webp" alt="Supply chain ecosystem artwork: dashboards on laptop, tablet and phone in front of grain silos and a warehouse" width="1672" height="941"></div>
       <div class="txt">
         <p class="label">Featured · FarMart ecosystem</p>
-        <h2 id="h-eco">Supply Chain Ecosystem</h2>
+        <h3>Supply Chain Ecosystem</h3>
         <p>Three connected products around one agricultural trade: an enterprise system on the web, an operational companion on mobile, and the earlier marketplace apps where I learned the trade.</p>
         <div class="prods">
           <a href="../case-studies/farmart-os.html"><b>FarMartOS</b><span>Web · enterprise operations</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -283,22 +305,25 @@ button[disabled] { opacity: .6; cursor: progress; }
       </div>
     </div>
 
-    <div class="grp" data-grp="case"><h2>Case studies</h2><p>FarMart · 2020 – 2026</p></div>
-    <div class="pgrid"><a class="pcard " data-cat="enterprise" href="../case-studies/farmart-os.html"><div class="pa"><img src="../assets/farmart-os.webp" alt="FarMartOS project artwork" loading="lazy" width="1672" height="941"><span class="plat">Web</span></div><div class="pb"><p class="meta"><span>Enterprise product</span><span>2022 – 2026</span></p><h3>FarMartOS</h3><p>Enterprise operations for connected supply-chain workflows: sales orders, procurement, delivery, deductions and financial closure.</p><div class="tags"><span>Enterprise UX</span><span>Information architecture</span><span>Workflows</span></div><span class="go">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a><a class="pcard " data-cat="mobile" href="../case-studies/farmart-pro.html"><div class="pa"><img src="../assets/farmart-pro.webp" alt="FarMart PRO project artwork" loading="lazy" width="1672" height="941"><span class="plat">Mobile</span></div><div class="pb"><p class="meta"><span>Operational mobile</span><span>2022 – 2026</span></p><h3>FarMart PRO</h3><p>Operational mobile for on-the-ground execution, with payment and deduction flows connected to FarMartOS.</p><div class="tags"><span>Mobile</span><span>Operations</span><span>Payments</span></div><span class="go">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a><a class="pcard " data-cat="mobile" href="../case-studies/farmart-app.html"><div class="pa"><img src="../assets/farmart-app.webp" alt="FarMart App project artwork" loading="lazy" width="1672" height="941"><span class="plat">Mobile</span></div><div class="pb"><p class="meta"><span>Mobile marketplace</span><span>2020</span></p><h3>FarMart App</h3><p>Mobile apps connecting agri-input dealers, village retailers and farmers: onboarding, invites, enquiries, orders and produce collection.</p><div class="tags"><span>UI / UX</span><span>Mobile</span><span>Onboarding</span></div><span class="go">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a></div>
+    <div class="pgrid"><a class="pcard " data-cat="enterprise" data-status="published" href="../case-studies/farmart-os.html"><div class="pa"><img src="../assets/farmart-os.webp" alt="FarMartOS project artwork" loading="lazy" width="1672" height="941"></div><div class="pb"><p class="meta"><span>Enterprise product</span><span>2022 – 2026</span></p><h3>FarMartOS</h3><p>Enterprise operations for connected supply-chain workflows: sales orders, procurement, delivery, deductions and financial closure.</p><div class="tags"><span>Enterprise UX</span><span>Information architecture</span><span>Workflows</span></div><span class="go">Explore Case Study <img src="../assets/arrow-circle.svg" width="16" height="16" alt=""></span></div></a><a class="pcard " data-cat="mobile" data-status="published" href="../case-studies/farmart-pro.html"><div class="pa"><img src="../assets/farmart-pro.webp" alt="FarMart PRO project artwork" loading="lazy" width="1672" height="941"></div><div class="pb"><p class="meta"><span>Operational mobile</span><span>2022 – 2026</span></p><h3>FarMart PRO</h3><p>Operational mobile for on-the-ground execution, with payment and deduction flows connected to FarMartOS.</p><div class="tags"><span>Mobile</span><span>Operations</span><span>Payments</span></div><span class="go">Explore Case Study <img src="../assets/arrow-circle.svg" width="16" height="16" alt=""></span></div></a><a class="pcard " data-cat="mobile" data-status="published" href="../case-studies/farmart-app.html"><div class="pa"><img src="../assets/farmart-app.webp" alt="FarMart App project artwork" loading="lazy" width="1672" height="941"></div><div class="pb"><p class="meta"><span>Mobile marketplace</span><span>2020</span></p><h3>FarMart App</h3><p>Mobile apps connecting agri-input dealers, village retailers and farmers: onboarding, invites, enquiries, orders and produce collection.</p><div class="tags"><span>UI / UX</span><span>Mobile</span><span>Onboarding</span></div><span class="go">Explore Case Study <img src="../assets/arrow-circle.svg" width="16" height="16" alt=""></span></div></a></div>
   </section>
 
   <section class="wrap" data-group="personal" aria-label="Personal projects">
-    <div class="grp" data-grp="personal"><h2>In development</h2><p>Personal projects · AI-assisted design</p></div>
-    <div class="pgrid"><article class="pcard soon" data-cat="personal" ><div class="pa"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="132" fill="#f7f5f3"/><rect x="18" y="16" width="40" height="26" rx="4" fill="#111218" stroke="#e6e3e0"/><rect x="68" y="16" width="40" height="26" rx="9" fill="#d49269" stroke="#e6e3e0"/><rect x="118" y="16" width="40" height="26" rx="14" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="168" y="16" width="40" height="26" rx="4" fill="#fff6ef" stroke="#e6e3e0"/><rect x="218" y="16" width="40" height="26" rx="9" fill="#9a5a33" stroke="#e6e3e0"/><rect x="268" y="16" width="40" height="26" rx="14" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="18" y="52" width="40" height="26" rx="9" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="68" y="52" width="40" height="26" rx="14" fill="#fff6ef" stroke="#e6e3e0"/><rect x="118" y="52" width="40" height="26" rx="4" fill="#9a5a33" stroke="#e6e3e0"/><rect x="168" y="52" width="40" height="26" rx="9" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="218" y="52" width="40" height="26" rx="14" fill="#111218" stroke="#e6e3e0"/><rect x="268" y="52" width="40" height="26" rx="4" fill="#d49269" stroke="#e6e3e0"/><rect x="18" y="88" width="40" height="26" rx="14" fill="#9a5a33" stroke="#e6e3e0"/><rect x="68" y="88" width="40" height="26" rx="4" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="118" y="88" width="40" height="26" rx="9" fill="#111218" stroke="#e6e3e0"/><rect x="168" y="88" width="40" height="26" rx="14" fill="#d49269" stroke="#e6e3e0"/><rect x="218" y="88" width="40" height="26" rx="4" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="268" y="88" width="40" height="26" rx="9" fill="#fff6ef" stroke="#e6e3e0"/></svg><span class="plat">In development</span></div><div class="pb"><p class="meta"><span>Personal project</span><span>Ongoing</span></p><h3>InterfaceOS</h3><p>An AI-ready design system connecting Figma variables, design tokens, components and code across Primitive, Semantic, Theme, Responsive and Motion foundations.</p><div class="tags"><span>Design systems</span><span>Tokens</span><span>Figma variables</span></div><span class="go dim">Case study coming soon</span></div></article><article class="pcard soon" data-cat="personal" ><div class="pa"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="132" fill="#f7f5f3"/><path d="M30 66 C 80 10, 120 10, 160 66 S 240 122, 290 66" fill="none" stroke="#d49269" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/><circle cx="30" cy="66" r="10" fill="#111218"/><circle cx="95" cy="30" r="9" fill="#e6e1dc"/><circle cx="160" cy="66" r="12" fill="#d49269"/><circle cx="225" cy="102" r="9" fill="#e6e1dc"/><circle cx="290" cy="66" r="10" fill="#111218"/><rect x="270" y="20" width="36" height="20" rx="10" fill="#fff6ef" stroke="#d49269"/><text x="288" y="34" text-anchor="middle" font-size="10" font-family="Geist Mono, monospace" fill="#9a5a33">ok</text></svg><span class="plat">In development</span></div><div class="pb"><p class="meta"><span>Personal project</span><span>Ongoing</span></p><h3>DesignOS</h3><p>An AI-assisted design workflow: a research-led path from understanding and research through exploration, design, critique, iteration and human approval.</p><div class="tags"><span>AI-assisted design</span><span>Workflow</span><span>Research</span></div><span class="go dim">Case study coming soon</span></div></article><article class="pcard soon" data-cat="personal" ><div class="pa"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="132" fill="#111218"/><rect x="20" y="20" width="150" height="10" rx="5" fill="#2a2b31"/><circle cx="190" cy="25" r="6" fill="#1f7a5c"/><rect x="20" y="44" width="203" height="10" rx="5" fill="#2a2b31"/><circle cx="243" cy="49" r="6" fill="#1f7a5c"/><rect x="20" y="68" width="256" height="10" rx="5" fill="#2a2b31"/><circle cx="296" cy="73" r="6" fill="#d49269"/><rect x="20" y="92" width="199" height="10" rx="5" fill="#2a2b31"/><circle cx="239" cy="97" r="6" fill="#1f7a5c"/><polyline points="20,118 70,108 110,112 150,96 190,100 230,84 270,88 300,76" fill="none" stroke="#d49269" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="plat">In development</span></div><div class="pb"><p class="meta"><span>Personal project</span><span>Ongoing</span></p><h3>EvidentOS</h3><p>AI runtime governance: approaches to verification, reliability, observability and governance for AI-driven UI systems.</p><div class="tags"><span>AI governance</span><span>Reliability</span><span>Observability</span></div><span class="go dim">Case study coming soon</span></div></article></div>
+    <div class="grp" data-grp="personal"><h2>Personal Projects</h2><p>Personal projects · AI-assisted design</p></div>
+    <div class="pgrid"><a class="pcard" data-cat="system" data-status="published" href="../case-studies/interface-ds.html"><div class="pa"><img src="../assets/interface-ds.png" alt="Interface DS design system illustration" loading="lazy"></div><div class="pb"><p class="meta"><span>Personal project</span><span>2026</span></p><h3>Interface DS</h3><p>An AI-ready design system connecting Figma variables, design tokens, components and code across Primitive, Semantic, Theme, Responsive and Motion foundations.</p><div class="tags"><span>Design systems</span><span>Tokens</span><span>Figma variables</span></div><span class="go">Explore Case Study <img src="../assets/arrow-circle.svg" width="16" height="16" alt=""></span></div></a><article class="pcard soon" data-cat="workflow" data-status="development" ><div class="pa"><img src="../assets/designos.png" alt="DesignOS blue geometric forms" loading="lazy"></div><div class="pb"><p class="meta"><span>Personal project</span><span>Ongoing</span></p><h3>DesignOS</h3><p>An AI-assisted design workflow: a research-led path from understanding and research through exploration, design, critique, iteration and human approval.</p><div class="tags"><span>AI-assisted design</span><span>Workflow</span><span>Research</span></div><span class="go dim">Case study coming soon</span></div></article><article class="pcard soon" data-cat="governance" data-status="development" ><div class="pa"><img src="../assets/farmart-app.webp" alt="EvidentOS project artwork" loading="lazy"></div><div class="pb"><p class="meta"><span>Personal project</span><span>Ongoing</span></p><h3>EvidentOS</h3><p>AI runtime governance: approaches to verification, reliability, observability and governance for AI-driven UI systems.</p><div class="tags"><span>AI governance</span><span>Reliability</span><span>Observability</span></div><span class="go dim">Case study coming soon</span></div></article></div>
   </section>
 
-  <p class="wrap empty" id="empty" hidden>No projects in this filter.</p>
+  <div class="wrap empty" id="empty" hidden>
+    <h2>No projects in this combination yet.</h2>
+    <p>Try another project focus or case-study status.</p>
+    <button type="button" class="reset-filters">Show all projects</button>
+  </div>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="foot-cta">
-      <h2>Want to see more, or talk about a role? <em>Get in touch.</em></h2>
+      <h2>Want to see more, or talk about a role? Get in touch.</h2>
       <div class="btns">
         <a class="btn dark" href="https://www.linkedin.com/in/jai-singh-639511173/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="btn soft" href="experience.html">See my experience</a>

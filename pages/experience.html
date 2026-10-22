@@ -170,8 +170,9 @@ button[disabled] { opacity: .6; cursor: progress; }
 @media (max-width: 900px) { .xs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } }
 @media (max-width: 560px) { .xs-grid { grid-template-columns: 1fr 1fr !important; } .xs-grid div:last-child { grid-column: 1 / -1; } }
 </style>
+<link rel="stylesheet" href="../css/figma-sync.css">
 </head>
-<body>
+<body class="experience-page">
 
 <header class="topbar">
   <div class="wrap">
@@ -194,8 +195,8 @@ button[disabled] { opacity: .6; cursor: progress; }
     <div class="xh">
       <div class="xh-text">
         <p class="label">Experience · 2018 – 2026</p>
-        <h1 style="font:700 clamp(40px,6vw,78px)/1.04 var(--f-display);letter-spacing:-0.04em">Eight years,<br>graphic design to <em style="font-style:normal;color:var(--accent)">product systems</em></h1>
-        <p class="lede" style="font-size:clamp(19px,2.2vw,24px);line-height:1.45;font-weight:300;color:var(--text);max-width:640px">I started in graphic design, moved into UI/UX, and spent six years at FarMart growing into ownership of connected procurement, sales, finance, warehouse and field workflows across FarMartOS and FarMart PRO.</p>
+        <h1 style="font:700 clamp(40px,6vw,80px)/1.04 var(--f-display);letter-spacing:-0.025em">Eight years,<br>graphic design to product systems</h1>
+        <p class="lede" style="font-size:clamp(19px,2.2vw,24px);line-height:1.45;font-weight:300;color:var(--text);max-width:745px">I started in graphic design, moved into UI/UX, and spent six years at FarMart growing into ownership of connected procurement, sales, finance, warehouse and field workflows across FarMartOS and FarMart PRO.</p>
         <div class="cv-row">
           <button type="button" class="connect" data-cv-download>Download CV (PDF) <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <a class="btn soft" href="cv.html">View CV</a>
@@ -205,10 +206,12 @@ button[disabled] { opacity: .6; cursor: progress; }
       </div>
       <figure class="xh-pic" aria-label="Illustrated portrait of Jai Singh">
         <img src="../assets/about-photo.webp" alt="Illustrated portrait of Jai Singh" width="517" height="555">
-        <div class="fchip a"><b>8 yrs</b><span>in design</span></div>
-        <div class="fchip b"><b>250+</b><span>active users</span></div>
-        <div class="fchip c"><b><i>★</i>Director’s Commitment Award</b><span>FarMart · 2026</span></div>
       </figure>
+    </div>
+    <div class="hero-chips">
+        <div class="hero-chip"><b>8 yrs</b><span>in design</span></div>
+        <div class="hero-chip"><b>250+</b><span>active users</span></div>
+        <div class="hero-chip"><b><i>★</i>Director’s Commitment Award</b><span>FarMart · 2026</span></div>
     </div>
   </div>
 
@@ -349,7 +352,7 @@ button[disabled] { opacity: .6; cursor: progress; }
         <div>
           <p class="label">Recognition</p>
           <h2 id="h-award">Director’s Commitment Award, FarMart · 2026</h2>
-          <p style="margin-top:18px;color:var(--band-text);font-size:17px;max-width:640px">Received at Dashak, FarMart’s 10th anniversary celebration, during a six-year tenure spanning graphic design, UI/UX and product design. The award included a travel and stay voucher.</p>
+          <p style="margin-top:18px;color:var(--band-text);font-size:17px;max-width:745px">Received at Dashak, FarMart’s 10th anniversary celebration, during a six-year tenure spanning graphic design, UI/UX and product design. The award included a travel and stay voucher.</p>
         </div>
         <svg viewBox="0 0 200 220" aria-hidden="true"><path d="M70 0h24l20 70H90z" fill="#d49269"/><path d="M130 0h-24L86 70h24z" fill="#9a5a33"/><circle cx="100" cy="135" r="70" fill="#d49269"/><circle cx="100" cy="135" r="56" fill="none" stroke="#fff6ef" stroke-width="3" stroke-dasharray="4 6"/><circle cx="100" cy="135" r="44" fill="#111218"/><text x="100" y="128" text-anchor="middle" font-family="Sora, sans-serif" font-size="13" font-weight="700" fill="#d49269">FARMART</text><text x="100" y="152" text-anchor="middle" font-family="Sora, sans-serif" font-size="22" font-weight="700" fill="#fff">2026</text></svg>
       </div>
@@ -397,11 +400,11 @@ button[disabled] { opacity: .6; cursor: progress; }
       <p class="label">Personal projects</p>
       <div class="measure">
         <h2 id="h-proj">What I’m building next</h2>
-        <div class="body"><p>Three independent projects, all in development, exploring how AI can support design systems, design workflows and the reliability of AI-driven interfaces.</p></div>
+        <div class="body"><p>Three independent projects, exploring how AI can support design systems, design workflows and the reliability of AI-driven interfaces.</p></div>
       </div>
     </div>
     <div class="eco">
-      <article><div class="cover"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="132" fill="#f7f5f3"/><rect x="18" y="16" width="40" height="26" rx="4" fill="#111218" stroke="#e6e3e0"/><rect x="68" y="16" width="40" height="26" rx="9" fill="#d49269" stroke="#e6e3e0"/><rect x="118" y="16" width="40" height="26" rx="14" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="168" y="16" width="40" height="26" rx="4" fill="#fff6ef" stroke="#e6e3e0"/><rect x="218" y="16" width="40" height="26" rx="9" fill="#9a5a33" stroke="#e6e3e0"/><rect x="268" y="16" width="40" height="26" rx="14" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="18" y="52" width="40" height="26" rx="9" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="68" y="52" width="40" height="26" rx="14" fill="#fff6ef" stroke="#e6e3e0"/><rect x="118" y="52" width="40" height="26" rx="4" fill="#9a5a33" stroke="#e6e3e0"/><rect x="168" y="52" width="40" height="26" rx="9" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="218" y="52" width="40" height="26" rx="14" fill="#111218" stroke="#e6e3e0"/><rect x="268" y="52" width="40" height="26" rx="4" fill="#d49269" stroke="#e6e3e0"/><rect x="18" y="88" width="40" height="26" rx="14" fill="#9a5a33" stroke="#e6e3e0"/><rect x="68" y="88" width="40" height="26" rx="4" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="118" y="88" width="40" height="26" rx="9" fill="#111218" stroke="#e6e3e0"/><rect x="168" y="88" width="40" height="26" rx="14" fill="#d49269" stroke="#e6e3e0"/><rect x="218" y="88" width="40" height="26" rx="4" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="268" y="88" width="40" height="26" rx="9" fill="#fff6ef" stroke="#e6e3e0"/></svg></div><p class="tag">In development</p><h3>InterfaceOS</h3><p>An AI-ready design system connecting Figma variables, design tokens, components and code across Primitive, Semantic, Theme, Responsive and Motion foundations. AI-assisted implementation with human design review.</p></article>
+      <article><div class="cover"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="132" fill="#f7f5f3"/><rect x="18" y="16" width="40" height="26" rx="4" fill="#111218" stroke="#e6e3e0"/><rect x="68" y="16" width="40" height="26" rx="9" fill="#d49269" stroke="#e6e3e0"/><rect x="118" y="16" width="40" height="26" rx="14" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="168" y="16" width="40" height="26" rx="4" fill="#fff6ef" stroke="#e6e3e0"/><rect x="218" y="16" width="40" height="26" rx="9" fill="#9a5a33" stroke="#e6e3e0"/><rect x="268" y="16" width="40" height="26" rx="14" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="18" y="52" width="40" height="26" rx="9" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="68" y="52" width="40" height="26" rx="14" fill="#fff6ef" stroke="#e6e3e0"/><rect x="118" y="52" width="40" height="26" rx="4" fill="#9a5a33" stroke="#e6e3e0"/><rect x="168" y="52" width="40" height="26" rx="9" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="218" y="52" width="40" height="26" rx="14" fill="#111218" stroke="#e6e3e0"/><rect x="268" y="52" width="40" height="26" rx="4" fill="#d49269" stroke="#e6e3e0"/><rect x="18" y="88" width="40" height="26" rx="14" fill="#9a5a33" stroke="#e6e3e0"/><rect x="68" y="88" width="40" height="26" rx="4" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="118" y="88" width="40" height="26" rx="9" fill="#111218" stroke="#e6e3e0"/><rect x="168" y="88" width="40" height="26" rx="14" fill="#d49269" stroke="#e6e3e0"/><rect x="218" y="88" width="40" height="26" rx="4" fill="#e6e1dc" stroke="#e6e3e0"/><rect x="268" y="88" width="40" height="26" rx="9" fill="#fff6ef" stroke="#e6e3e0"/></svg></div><a class="tag-link" href="../case-studies/interface-ds.html">Explore case study →</a><h3>Interface DS</h3><p>An AI-ready design system connecting Figma variables, design tokens, components and code across Primitive, Semantic, Theme, Responsive and Motion foundations. AI-assisted implementation with human design review.</p></article>
       <article><div class="cover"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="132" fill="#f7f5f3"/><path d="M30 66 C 80 10, 120 10, 160 66 S 240 122, 290 66" fill="none" stroke="#d49269" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/><circle cx="30" cy="66" r="10" fill="#111218"/><circle cx="95" cy="30" r="9" fill="#e6e1dc"/><circle cx="160" cy="66" r="12" fill="#d49269"/><circle cx="225" cy="102" r="9" fill="#e6e1dc"/><circle cx="290" cy="66" r="10" fill="#111218"/><rect x="270" y="20" width="36" height="20" rx="10" fill="#fff6ef" stroke="#d49269"/><text x="288" y="34" text-anchor="middle" font-size="10" font-family="Geist Mono, monospace" fill="#9a5a33">ok</text></svg></div><p class="tag">In development</p><h3>DesignOS</h3><p>An AI-assisted design workflow: a research-led path from understanding and research through exploration, design, critique, iteration and human approval.</p></article>
       <article><div class="cover"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="132" fill="#111218"/><rect x="20" y="20" width="150" height="10" rx="5" fill="#2a2b31"/><circle cx="190" cy="25" r="6" fill="#1f7a5c"/><rect x="20" y="44" width="203" height="10" rx="5" fill="#2a2b31"/><circle cx="243" cy="49" r="6" fill="#1f7a5c"/><rect x="20" y="68" width="256" height="10" rx="5" fill="#2a2b31"/><circle cx="296" cy="73" r="6" fill="#d49269"/><rect x="20" y="92" width="199" height="10" rx="5" fill="#2a2b31"/><circle cx="239" cy="97" r="6" fill="#1f7a5c"/><polyline points="20,118 70,108 110,112 150,96 190,100 230,84 270,88 300,76" fill="none" stroke="#d49269" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="tag">In development</p><h3>EvidentOS</h3><p>AI runtime governance: approaches to verification, reliability, observability and governance for AI-driven UI systems, with checks and monitoring around execution.</p></article>
     </div>
