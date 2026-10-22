@@ -66,6 +66,23 @@ p.lead { color: var(--text); }
   header.id h1 { font-size: 19pt; }
 }
 @page { size: A4; margin: 14mm 15mm; }
+/* Figma CV 2358:14; preserve the existing A4 print rules below. */
+@media screen {
+  body { background: white; font: 400 13.5px/1.42 "Outfit", sans-serif; }
+  .bar { background: var(--ground); }
+  .bar-in { max-width: 1272px; min-height: 58px; }
+  .back { font-family: "Outfit", sans-serif; }
+  .btn { font: 600 13.5px/1.2 "Outfit", sans-serif; }
+  .sheet { max-width: 794px; padding: 60px 64px; box-shadow: none; }
+  header.id { border-bottom-width: 1.5px; }
+  header.id h1 { font-size: 29px; letter-spacing: -.29px; }
+  header.id .role { font-size: 15px; }
+  header.id .contact { font-size: 12.5px; }
+  section > h2 { font-size: 14px; letter-spacing: 1.12px; padding-bottom: 6px; border-bottom-width: 1px; margin-bottom: 8px; }
+  .item h3 { font-size: 15px; }
+  .item .date { font-size: 12.5px; }
+}
+@media screen and (max-width: 640px) { .sheet { padding: 24px 18px; } header.id h1 { font-size: 26px; } }
 @media print {
   body { background: #fff; }
   .bar, body::before { display: none !important; }

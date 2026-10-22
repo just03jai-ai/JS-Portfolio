@@ -1,0 +1,48 @@
+/* All Projects — Figma 2345:14. Scoped to this page. */
+.counts { gap: 12px; }
+.counts > span { align-items: center; gap: 10px; padding: 12px 16px; }
+.counts b { font-size: 24px; }
+.filters { border-top: 1px solid var(--line); background: rgba(255,255,255,.97); }
+.filters .wrap { display: flex; flex-direction: column; gap: 16px; padding-block: 20px; overflow: visible; }
+.filter-row { display: flex; align-items: center; gap: 20px; }
+.filter-label { flex: 0 0 94px; font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.filter-options { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; min-width: 0; }
+.fbtn { padding: 11px 15px; font-weight: 500; }
+.fbtn:hover { border-color: var(--accent); }
+.status-row { border-top: 1px solid var(--line); padding-top: 16px; }
+.status-btn { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: var(--text); font: 400 13px/1.3 var(--f-ui); cursor: pointer; }
+.status-btn b { font: 400 11px/1 var(--f-mono); color: var(--muted); }
+.status-btn[aria-pressed="true"] { background: var(--paper); border-color: var(--line); color: var(--ink); font-weight: 600; }
+.status-btn:hover { background: var(--paper); }
+.filter-result { margin-left: auto; font-size: 13px; color: var(--muted); white-space: nowrap; }
+.empty { padding-block: 64px; }
+.empty h2 { font: 600 24px/1.3 var(--f-ui); color: var(--ink); margin-bottom: 10px; }
+.reset-filters { margin-top: 20px; border: 0; border-radius: 8px; padding: 12px 18px; font: 500 14px/1.3 var(--f-ui); background: var(--ink); color: white; cursor: pointer; }
+.empty[hidden] { display: none; }
+.feat { grid-template-columns: 540fr 700fr; }
+.feat .art { min-height: 454px; }
+.feat h3 { font: 700 clamp(26px, 3.2vw, 38px)/1.1 var(--f-display); letter-spacing: -.02em; }
+.feat .label { font-size: 11px; }
+.feat .prods { margin-top: 0; }
+.feat .prods a { padding-block: 14px; gap: 2px 12px; }
+.feat .prods b { line-height: 1.2; }
+.pcard .pa { aspect-ratio: 395.333 / 236; }
+.pcard .pa img { transform: scale(1.065); }
+.pcard:hover .pa img { transform: scale(1.09); }
+.pcard .pb { padding: 22px; gap: 24px; }
+.pcard h3 + p { margin-top: -14px; }
+.pcard .tags { margin-top: -14px; }
+.pcard .tags span { padding: 3px 9px; }
+.pcard .go { margin-top: 0; padding: 12px 16px; border: 1px solid rgba(212,146,105,.11); border-radius: 8px; background: #fff8f2; color: var(--accent); font-weight: 400; justify-self: start; }
+.pcard .go.dim { background: #f4f4f5; color: var(--muted); border-color: var(--line); }
+.pcard .go img { width: 16px; height: 16px; }
+[data-group][hidden] { display: none; }
+footer { margin-top: 0; background: white; }
+.foot-cta { align-items: center; }
+.foot-cta h2 { font: 700 clamp(30px, 3vw, 40px)/1.12 var(--f-ui); letter-spacing: normal; max-width: 680px; }
+.foot-bar { font-size: 13px; }
+.foot-bar b { font: inherit; color: inherit; }
+@media (max-width: 960px) { .feat { grid-template-columns: 1fr; } .feat .art { min-height: 0; } }
+@media (max-width: 640px) { .grp { margin-top: 48px; } .pcard .pb { gap: 20px; } .pcard h3 + p, .pcard .tags { margin-top: -10px; } }
+@media (max-width: 1000px) { .filter-row { align-items: flex-start; } .filter-label { padding-top: 11px; } .status-row { flex-wrap: wrap; gap: 8px 20px; } .status-row .filter-label { padding-top: 7px; } .filter-result { flex-basis: 100%; margin-left: 114px; } }
+@media (max-width: 640px) { .filters { position: static; margin-top: 32px; } .filters .wrap { gap: 18px; } .filter-row { flex-direction: column; gap: 10px; } .filter-label { flex-basis: auto; padding-top: 0; } .status-row .filter-label { padding-top: 0; } .filter-result { flex-basis: auto; margin: 4px 0 0; } .fbtn { font-size: 13px; padding: 10px 12px; } .filter-options { gap: 7px; } .counts > span { padding: 10px 12px; font-size: 13px; } .counts b { font-size: 21px; } }

@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Interface DS Case Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Interface DS: rebuilding a commercial design system three times, as tokens, React components and a Figma library, with Claude.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/mockups.css">
+<style>
+.hero-art { border-radius: 20px; overflow: hidden; background: #f4f4f5; aspect-ratio: 1191 / 669; max-width: 100%; }
+.hero-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* ---------- Interface DS page-specific ---------- */
+.stack code, .idm code { font: 500 13px/1 var(--f-mono); background: var(--accent-tint); color: var(--accent-ink); padding: 3px 6px; border-radius: 5px; }
+.status-pill { display: inline-block; font-size: 13px; padding: 5px 10px; border-radius: 6px; white-space: nowrap; }
+.status-pill.warn { background: var(--warn-tint); color: var(--warn); }
+.status-pill.ok { background: var(--ok-tint); color: var(--ok); }
+.bar-rows { display: grid; gap: 16px; }
+.bar-row { display: grid; grid-template-columns: 170px minmax(0,1fr) 56px; gap: 16px; align-items: center; }
+.bar-row .lbl { font-size: 14.5px; color: var(--text); }
+.bar-track { height: 14px; border-radius: 7px; background: #fff; border: 1px solid var(--line); overflow: hidden; }
+.bar-fill { height: 12px; margin: 1px; border-radius: 6px; background: #d5d0cb; }
+.bar-fill.dark { background: var(--band); }
+.bar-row .n { font: 600 26px/1 var(--f-display); color: var(--ink); text-align: right; }
+.shadow-compare { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.shadow-card { background: var(--paper); border-radius: 20px; padding: 32px; display: grid; gap: 10px; }
+.shadow-card h5 { margin: 0; font: 500 11px/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.shadow-swatch { background: #fff; border-radius: 12px; padding: 28px 0; display: flex; justify-content: center; }
+.shadow-swatch span { display: block; width: 96px; height: 60px; border-radius: 12px; background: #fff; }
+.shadow-swatch.before span { box-shadow: 0 0 0 3px rgba(255,255,255,.92), 0 0 0 1px #1c1e22, 0 0 0 1px #e8e9e9; }
+.shadow-swatch.after span { box-shadow: 0 0 0 1px #1c1e22, 0 0 0 3px rgba(255,255,255,.7); }
+.shadow-card p { font-size: 14.5px; color: var(--text); margin: 0; }
+.idm { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+.idm div { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; }
+.idm div span { color: var(--muted); font: 400 12px var(--f-mono); }
+.palette-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.palette-tabs span { font-size: 13px; padding: 7px 12px; border-radius: 8px; background: #fff; color: var(--text); }
+.palette-tabs span.on { background: #fff; color: var(--ink); font-weight: 600; box-shadow: 0 1px 2px rgba(16,18,22,.12); }
+.demo-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+.demo-row .btn-ghost { border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-size: 14px; background: #fff; color: var(--ink); }
+.demo-row .btn-tonal { border-radius: 999px; padding: 9px 16px; font-size: 14px; background: var(--accent-tint); color: var(--accent-ink); }
+.demo-row .btn-solid { border-radius: 999px; padding: 9px 16px; font-size: 14px; background: var(--ink); color: #fff; }
+.stat-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: grid; gap: 4px; max-width: 260px; }
+.stat-card b { font: 600 24px/1.2 var(--f-display); color: var(--ink); }
+.stat-card span { font-size: 13px; color: var(--muted); }
+</style>
+<link rel="stylesheet" href="../css/responsive-fixes.css">
+<link rel="stylesheet" href="../css/interface-ds.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../pages/projects.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Jai Singh · Work</a>
+    <div class="right">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">Problem</a>
+        <a href="#system">System</a>
+        <a href="#decisions">Decisions</a>
+        <a href="#library">Library</a>
+        <a href="#impact">Impact</a>
+      </nav>
+      <a class="connect" href="https://www.linkedin.com/in/jai-singh-639511173/" target="_blank" rel="noopener noreferrer">Let’s Connect</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="label">Case study · Design systems · 2026</p>
+    <h1>Interface <em>Design System</em></h1>
+    <p class="lede">Rebuilding a commercial design system three times, as tokens, as React components and as a Figma library, so that one change to a token reaches every surface.</p>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Design and build, end to end<small>paired with Claude on the build</small></dd></div>
+      <div><dt>Type</dt><dd>Independent study<small>reference: Infinify DS</small></dd></div>
+      <div><dt>Year</dt><dd>2026</dd></div>
+      <div><dt>Surfaces</dt><dd>Tokens · React · Figma</dd></div>
+      <div><dt>Scale</dt><dd>30 sets · 358 variants<small>3,024 icons in Figma</small></dd></div>
+    </dl>
+    <figure class="figure">
+      <div class="dg" role="img" aria-label="Diagram: primitive tokens feed semantic and palette roles, which compile to CSS variables, React components and Figma variables.">
+        <div class="dg-trade">
+          <div class="dg-col">
+            <h5>Primitives</h5>
+            <div class="dg-chip"><i></i>brand-600<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">color</span></div>
+            <div class="dg-chip"><i style="background:#909295"></i>mono-500<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">color</span></div>
+            <div class="dg-chip"><i style="background:#f33d3d"></i>error-600<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">color</span></div>
+            <div class="dg-chip"><i style="background:transparent;border:1px solid var(--ink)"></i>spacing-4<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">number</span></div>
+            <div class="dg-chip"><i style="background:transparent;border:1px solid var(--ink);border-radius:4px"></i>radius-4<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">number</span></div>
+          </div>
+          <span class="arw">→</span>
+          <div class="dg-record">
+            <h5>One token source</h5>
+            <h4>Roles, not hues</h4>
+            <div class="dg-objs">
+              <div class="dg-obj"><b>Semantic</b><span>fg/secondary · bg/tertiary</span></div>
+              <div class="dg-obj"><b>Palette</b><span>solid · tonal · text</span></div>
+              <div class="dg-obj fin"><b>Themes</b><span>Day · Night</span></div>
+            </div>
+            <div class="dg-dos"><span>brand</span><span>mono</span><span>error</span><span>success</span><span>warning</span><span>+ new</span></div>
+          </div>
+          <span class="arw">→</span>
+          <div class="dg-col">
+            <h5>Surfaces</h5>
+            <div class="dg-chip"><i></i>CSS variables<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">tokens.css</span></div>
+            <div class="dg-chip"><i></i>React components<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">30 families</span></div>
+            <div class="dg-chip"><i></i>Figma variables<span style="margin-left:auto;font:400 11px var(--f-mono);color:var(--muted)">5 collections</span></div>
+          </div>
+        </div>
+      </div>
+      <figcaption class="dg-cap"><span class="concept">Model</span><b>Nothing is drawn twice.</b> The website and the Figma file both read from one token file.</figcaption>
+    </figure>
+  </div>
+
+  <!-- Problem -->
+  <section class="wrap block" id="problem" aria-labelledby="h-problem">
+    <div class="sec-top">
+      <p class="label">The problem</p>
+      <div class="measure">
+        <h2 id="h-problem">A showcase shows outcomes, not the reasoning.</h2>
+        <div class="body">
+          <p>Infinify is a polished commercial design system, published as a Behance showcase. A showcase tells you what the buttons look like. It doesn’t tell you why the tokens are layered the way they are, or what breaks when a second theme arrives.</p>
+          <p>I wanted the reasoning, so I rebuilt it as a working system with one rule: <strong>nothing is drawn twice.</strong> Colors, spacing, radius, type and shadows start as tokens, and both the website and the Figma file read from them.</p>
+        </div>
+      </div>
+    </div>
+    <div class="indent">
+      <div class="three">
+        <div><h3>One source, three surfaces</h3><p>A token change has to land in CSS, in React components and in Figma variables, without anyone copying hex codes by hand.</p></div>
+        <div><h3>Themes multiply everything</h3><p>Five palettes and two themes turn every component into ten. The structure has to absorb that, not the variant count.</p></div>
+        <div><h3>Figma and CSS disagree quietly</h3><p>Effects stack in opposite orders and icons scale differently. The mismatches only show up when you build both.</p></div>
+      </div>
+      <p class="question"><span class="label">Design question</span>How might I rebuild a design system so one token change reaches code and Figma, and a component never needs to know which color it is?</p>
+    </div>
+  </section>
+
+  <!-- System -->
+  <section class="wrap block" id="system" aria-labelledby="h-system">
+    <div class="sec-top">
+      <p class="label">The system</p>
+      <div class="measure">
+        <h2 id="h-system">Three layers of color, so a component never names a hue.</h2>
+        <div class="body"><p>Each layer only points at the one below it. A component reads the top layer, so a single attribute recolors it and a theme swap re-resolves everything underneath.</p></div>
+      </div>
+    </div>
+    <div class="indent">
+      <div class="stack">
+        <div><span class="n">01</span><b>Primitives</b><span>Raw ramps such as <code>--brand-600</code>. 102 colors, plus spacing, radius, type and 12 shadow levels.</span></div>
+        <div><span class="n">02</span><b>Semantic roles</b><span>What a color is for: <code>--fg-secondary</code>, <code>--bg-tertiary</code>, <code>--border-subtle</code>. 19 roles, resolved per theme.</span></div>
+        <div><span class="n">03</span><b>Palette roles</b><span>A surface and what sits on it: <code>solid</code>, <code>on-solid</code>, <code>tonal</code>, <code>text</code>. Set by <code>data-palette</code>.</span></div>
+        <div><span class="n">04</span><b>Components</b><span>Read layer 03 only. No component file contains a hex value.</span></div>
+      </div>
+      <figure class="figure demo-figure">
+        <div class="palette-demo" data-palette="brand">
+          <div class="demo-toolbar">
+            <div class="palette-tabs" role="group" aria-label="Component palette">
+              <button type="button" data-palette-choice="brand" aria-pressed="true">Brand</button>
+              <button type="button" data-palette-choice="mono" aria-pressed="false">Mono</button>
+              <button type="button" data-palette-choice="error" aria-pressed="false">Error</button>
+              <button type="button" data-palette-choice="success" aria-pressed="false">Success</button>
+              <button type="button" data-palette-choice="warning" aria-pressed="false">Warning</button>
+            </div>
+            <label class="dark-toggle"><input type="checkbox" data-demo-dark><span class="demo-toggle-track"></span>Dark</label>
+          </div>
+          <div class="demo-panel">
+            <div class="demo-row">
+              <button type="button" class="sample-button solid" data-approve aria-pressed="false"><img src="../assets/interface-ds/check.svg" alt=""> <span>Approve</span></button>
+              <button type="button" class="sample-button tonal" data-sample-action="Tonal button selected">Tonal</button>
+              <button type="button" class="sample-button outline" data-sample-action="Outline button selected">Outline</button>
+            </div>
+            <div class="demo-row">
+              <span class="sample-badge solid">• Status</span><span class="sample-badge tonal">Tonal</span><span class="sample-badge outline">Outline</span>
+              <span class="sample-avatar">JS</span>
+              <input class="sample-checkbox" type="checkbox" checked aria-label="Sample checkbox">
+              <label class="sample-switch"><input type="checkbox" checked aria-label="Sample switch"><span class="demo-toggle-track"></span></label>
+            </div>
+            <progress max="100" value="75" aria-label="Sample progress">75%</progress>
+            <p class="visually-hidden" role="status" data-palette-status></p>
+          </div>
+        </div>
+        <figcaption class="dg-cap"><span class="concept">Live</span><b>Try it.</b> <code>data-palette="brand"</code> points <code>--p-solid</code> at <code>--brand-600</code> and <code>--p-text</code> at <code>--brand-700</code>. Same markup, 5 palettes × 2 themes.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Decisions -->
+  <section class="wrap block" id="decisions" aria-labelledby="h-d1">
+    <div class="sec-top">
+      <p class="label">Decision 01 · Variants</p>
+      <div class="measure">
+        <h2 id="h-d1">Palette is a mode, not a variant.</h2>
+        <div class="body"><p>In Figma the Button has type, size and state: 80 variants. Adding five palettes as a variant property would have made it 400, and done the same to every other set. Instead, Palette is a variable collection with five modes that point at the theme’s palette roles. Any instance switches palette from the layer panel, and Light/Dark stays independent.</p></div>
+      </div>
+    </div>
+    <div class="indent">
+      <figure class="figure">
+        <div class="dg" role="img" aria-label="Bar comparison: 400 Button variants if palette were a variant, 80 when palette is a variable mode.">
+          <p class="label" style="margin-bottom:12px">Button variants in Figma</p>
+          <div class="bar-rows">
+            <div class="bar-row"><span class="lbl">Palette as a variant</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="n">400</span></div>
+            <div class="bar-row"><span class="lbl">Palette as a mode</span><div class="bar-track"><div class="bar-fill dark" style="width:20%"></div></div><span class="n">80</span></div>
+          </div>
+        </div>
+        <figcaption class="dg-cap"><b>Type × Size × State gives 80.</b> The palette lives in a variable collection with five modes, so it adds nothing.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap block" aria-labelledby="h-d2">
+    <div class="sec-top">
+      <p class="label">Decision 02 · Contrast</p>
+      <div class="measure">
+        <h2 id="h-d2">Measure contrast; don’t trust the eye.</h2>
+        <div class="body"><p>Two roles looked fine and measured badly. I fixed them by changing the token, not the component, so every use improved at once. Neither is fully there yet, and I’d rather show that than round it up.</p></div>
+      </div>
+    </div>
+    <div class="indent tablewrap">
+      <table>
+        <tr><th>Role</th><th>Change</th><th>Before</th><th>After</th><th>WCAG AA (4.5:1)</th></tr>
+        <tr><td>Tertiary text</td><td><code>mono-500</code> → 45% mix with <code>mono-600</code></td><td>2.81</td><td>4.48</td><td><span class="status-pill warn">Short by 0.02</span></td></tr>
+        <tr><td>Avatar initials, dark</td><td>Success, Warning: <code>--p-solid</code> → <code>--p-text</code></td><td>2.29</td><td>4.28–4.44</td><td><span class="status-pill warn">Still short</span></td></tr>
+        <tr><td>Avatar initials, dark</td><td>Brand, Mono, Error: same change</td><td>2.29</td><td>up to 6.28</td><td><span class="status-pill ok">Passes</span></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap block" aria-labelledby="h-d3">
+    <div class="sec-top">
+      <p class="label">Decision 03 · Effects</p>
+      <div class="measure">
+        <h2 id="h-d3">Same shadow tokens, opposite stacking order.</h2>
+        <div class="body"><p>The focus style is two layers: a 1px dark ring and a soft 3px halo. In CSS the first shadow paints on top; in Figma the last one does. Copying the token list verbatim hid the ring in Figma. Reversing the layer order in all twelve effect styles made the library match the browser.</p></div>
+      </div>
+    </div>
+    <div class="indent shadow-compare">
+      <div class="shadow-card">
+        <h5>Figma, as first built</h5>
+        <div class="shadow-swatch before"><span></span></div>
+        <p>The halo painted over the 1px ring, so the focus ring vanished.</p>
+      </div>
+      <div class="shadow-card">
+        <h5>Layers reversed</h5>
+        <div class="shadow-swatch after"><span></span></div>
+        <p>Figma paints the last effect on top, CSS the first. Reordering matched them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block" aria-labelledby="h-d4">
+    <div class="sec-top">
+      <p class="label">Decision 04 · Icons</p>
+      <div class="measure">
+        <h2 id="h-d4">Stable names over borrowed ones.</h2>
+        <div class="body"><p>The first icon set was hand-drawn and uneven in weight. I moved to Phosphor (MIT) but kept the system’s own names, so no component changed. In Figma, swapping the geometry inside the existing icon components updated every button, menu and table at once, and the full set ships in Regular and Fill on two extra pages.</p></div>
+      </div>
+    </div>
+    <div class="indent">
+      <div class="dg" role="img" aria-label="Mapping from the system's own icon names to the Phosphor icon names underneath them.">
+        <p class="label" style="margin-bottom:14px">System name → Phosphor name</p>
+        <div class="idm">
+          <div><img src="../assets/interface-ds/search.svg" alt=""><code>search</code><span>magnifying-glass</span></div>
+          <div><img src="../assets/interface-ds/home.svg" alt=""><code>home</code><span>house</span></div>
+          <div><img src="../assets/interface-ds/edit.svg" alt=""><code>edit</code><span>pencil-simple</span></div>
+          <div><img src="../assets/interface-ds/settings.svg" alt=""><code>settings</code><span>gear</span></div>
+          <div><img src="../assets/interface-ds/close.svg" alt=""><code>close</code><span>x</span></div>
+          <div><img src="../assets/interface-ds/more.svg" alt=""><code>more</code><span>dots-three</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Library -->
+  <section class="wrap block" id="library" aria-labelledby="h-lib">
+    <div class="sec-top">
+      <p class="label">Figma library</p>
+      <div class="measure">
+        <h2 id="h-lib">Complex components, built only from the parts above.</h2>
+        <div class="body"><p>Every fill, stroke, radius and gap in the Figma file is bound to a variable, and every variable carries its CSS name as code syntax. Each component page has a header and a Light/Dark preview made of real instances.</p></div>
+      </div>
+    </div>
+    <div class="indent">
+      <figure class="figure demo-figure library-figure">
+        <div class="library-demo">
+          <div class="focus-card library-card">
+            <div class="focus-header"><img src="../assets/interface-ds/focus.svg" alt=""><strong>Weekly focus time</strong><img src="../assets/interface-ds/info.svg" alt=""><button type="button" class="more-button" aria-label="Toggle sample menu" aria-expanded="true" aria-controls="sample-menu"><img src="../assets/interface-ds/more.svg" alt=""></button></div>
+            <b>12h 42m</b><p>Total Progress <span class="delta"><img src="../assets/interface-ds/trend.svg" alt="">35%</span></p>
+          </div>
+          <div class="chart-card library-card">
+            <div class="donut" tabindex="0" role="img" aria-label="Weekly focus time donut chart. Use the day buttons for each value.">
+              <img src="../assets/interface-ds/donut.svg" width="196" height="196" alt="">
+              <div class="donut-center"><span>Weekly average</span><b>12h 42m</b><small><img src="../assets/interface-ds/trend-small.svg" alt="">+35m</small></div>
+              <span class="chart-tooltip" role="status">3h 12m</span>
+            </div>
+            <div class="chart-legend" aria-label="Focus time by day"><button type="button" data-chart-day="0"><i style="background:#2c68d7"></i><span>Monday</span><span>4h 49m</span></button>
+<button type="button" data-chart-day="1"><i style="background:#3478f6"></i><span>Tuesday</span><span>3h 12m</span></button>
+<button type="button" data-chart-day="2"><i style="background:#538dfa"></i><span>Wednesday</span><span>3h 24m</span></button>
+<button type="button" data-chart-day="3"><i style="background:#79a7ff"></i><span>Thursday</span><span>1h 2m</span></button>
+<button type="button" data-chart-day="4"><i style="background:#9dbfff"></i><span>Friday</span><span>15m</span></button>
+</div>
+          </div>
+          <div class="sample-menu library-card" id="sample-menu" aria-label="Sample actions"><button type="button" data-menu-action="Rename"><img src="../assets/interface-ds/rename.svg" alt=""><span>Rename</span></button>
+<button type="button" data-menu-action="Add to favorite"><img src="../assets/interface-ds/heart.svg" alt=""><span>Add to favorite</span></button>
+<button type="button" data-menu-action="Move to folder"><img src="../assets/interface-ds/folder.svg" alt=""><span>Move to folder</span></button>
+<button type="button" data-menu-action="Duplicate"><img src="../assets/interface-ds/copy.svg" alt=""><span>Duplicate</span></button>
+<button type="button" data-menu-action="Export as CSV"><img src="../assets/interface-ds/export.svg" alt=""><span>Export as CSV</span></button>
+<button type="button" data-menu-action="Backup"><img src="../assets/interface-ds/backup.svg" alt=""><span>Backup</span></button>
+<button type="button" data-menu-action="Undo"><img src="../assets/interface-ds/undo.svg" alt=""><span>Undo</span><kbd>⌘ Z</kbd></button>
+<button type="button" data-menu-action="Redo"><img src="../assets/interface-ds/redo.svg" alt=""><span>Redo</span><kbd>⌘ ⇧ Z</kbd></button>
+<button type="button" data-menu-action="Archive"><img src="../assets/interface-ds/archive.svg" alt=""><span>Archive</span></button>
+<button type="button" data-menu-action="Delete" class="menu-danger"><img src="../assets/interface-ds/trash.svg" alt=""><span>Delete</span></button>
+</div>
+          <div class="calendar library-card">
+            <div class="calendar-shortcuts"><button type="button" data-date-offset="0">Today</button><button type="button" data-date-offset="1">Tomorrow</button><button type="button" data-date-offset="2">in 2 days</button></div>
+            <div class="calendar-heading"><button type="button" data-month-step="-1" aria-label="Previous month"><img src="../assets/interface-ds/previous.svg" alt=""></button><p data-calendar-month aria-live="polite">April 2024</p><button type="button" data-month-step="1" aria-label="Next month"><img src="../assets/interface-ds/next.svg" alt=""></button></div>
+            <div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+            <div class="calendar-days" role="group" aria-label="Choose a date"></div>
+            <div class="calendar-reminder"><b>Reminder</b><button type="button" data-add-reminder>＋ Add reminder</button><input type="text" maxlength="120" aria-label="Reminder text" placeholder="Add a reminder" hidden></div>
+            <div class="calendar-footer"><button type="button" data-date-remove>Remove</button><button type="button" class="primary" data-date-done>Done</button></div>
+          </div>
+          <p class="visually-hidden" role="status" data-library-status></p>
+        </div>
+        <figcaption class="dg-cap"><span class="concept">Live</span><b>These are the components, not screenshots.</b> Hover the menu, pick a date, hover the donut.</figcaption>
+      </figure>
+      <div class="tablewrap" id="component-inventory" style="margin-top:28px">
+        <table>
+          <tr><th>Family</th><th>Sets</th><th>Variants</th></tr>
+          <tr><td>Button</td><td>1</td><td>80</td></tr>
+          <tr><td>Avatar + Gradient</td><td>2</td><td>72</td></tr>
+          <tr><td>Checkbox, Radio, Switch</td><td>3</td><td>35</td></tr>
+          <tr><td>Input, Select, Text area</td><td>3</td><td>29</td></tr>
+          <tr><td>Tooltip + Rich tooltip</td><td>2</td><td>21</td></tr>
+          <tr><td>Badge</td><td>1</td><td>20</td></tr>
+          <tr><td>Chip</td><td>1</td><td>15</td></tr>
+          <tr><td>Menu, Messages, Navigation, Charts</td><td>5</td><td>13</td></tr>
+          <tr><td>Data table</td><td>3</td><td>12</td></tr>
+          <tr><td>Date picker, Uploader, Progress, Breadcrumbs</td><td>6</td><td>40</td></tr>
+          <tr><td>Pagination, Cards, Tabs</td><td>4</td><td>21</td></tr>
+        </table>
+      </div>
+      <div class="library-links"><a class="btn dark" href="https://www.figma.com/design/teapCPPJVF6okkkP9mTbUO/My-Portfolio-Webpage?node-id=2397-601" target="_blank" rel="noopener noreferrer">Open the Figma file →</a><a class="btn soft" href="#component-inventory">See component inventory →</a></div>
+    </div>
+  </section>
+
+  <!-- Trade-offs -->
+  <section class="wrap block" aria-labelledby="h-trade">
+    <div class="sec-top">
+      <p class="label">Trade-offs</p>
+      <div class="measure"><h2 id="h-trade">What each call cost</h2></div>
+    </div>
+    <div class="indent tradeoffs">
+      <div><h4>Modes<i>over</i>variants</h4><p>Five times fewer variants, but a palette is less discoverable: it lives in the layer panel, not the Assets panel.</p></div>
+      <div><h4>Phosphor<i>over</i>hand-drawn</h4><p>Consistent weights and 1,512 icons, at about 45 KB gzip more in the bundle until it’s tree-shaken per page.</p></div>
+      <div><h4>Centered<i>over</i>scaling icons</h4><p>Each Figma icon is pinned to the center of its 24px frame. Resizing an instance now needs the scale tool.</p></div>
+      <div><h4>Rebuild<i>over</i>import</h4><p>Slower than tracing the showcase, but it surfaced every mismatch between Figma and CSS on this page.</p></div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section class="band" id="impact" aria-labelledby="h-impact">
+    <div class="wrap">
+      <p class="label">Impact</p>
+      <h2 id="h-impact">What this work covered</h2>
+      <div class="stats">
+        <div><b>102</b><span>primitive colors behind 19 semantic roles</span><small>One token file</small></div>
+        <div><b>30</b><span>component sets, each bound to variables</span><small>Figma + React</small></div>
+        <div><b>358</b><span>variants, kept low by palette modes</span><small>Figma library</small></div>
+        <div><b>3,024</b><span>Phosphor icons, Regular and Fill</span><small>Bound to fg/primary</small></div>
+      </div>
+      <div class="next">
+        <p class="label">Measuring next</p>
+        <div>
+          <p>These are counts of what exists, not outcomes. What I’d measure and ship next:</p>
+          <ul>
+            <li>Close the contrast gaps: tertiary text, Success and Warning initials</li>
+            <li>Code Connect, so Dev Mode shows the real React source</li>
+            <li>Export tokens in the W3C DTCG format for other tools</li>
+            <li>Screenshot tests for every component in both themes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learned -->
+  <section class="wrap block" aria-labelledby="h-learn">
+    <div class="sec-top">
+      <p class="label">What I learned</p>
+      <div class="measure">
+        <h2 id="h-learn">A system is the questions it answers</h2>
+        <div class="body"><p>The useful artifact wasn’t a component; it was a habit. Before adding anything, I now ask:</p></div>
+      </div>
+    </div>
+    <div class="indent questions">
+      <p>Where does this value come from?</p>
+      <p>Which layer should change?</p>
+      <p>Does Figma paint it the same way?</p>
+      <p>Will it survive a second theme?</p>
+      <p>Who breaks if I rename it?</p>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="About this study">
+    <p class="note"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7v4M8 5v.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Independent study. The original Infinify Design System is by Andy Matviienko and Vladyslav Germash. Component examples on this page are interactive HTML; icons are Phosphor (MIT); component type is Inter.</span></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-cta">
+      <h2>Building a system that has to scale? <em>Get in touch.</em></h2>
+      <div class="btns">
+        <a class="btn dark" href="https://www.linkedin.com/in/jai-singh-639511173/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn soft" href="../pages/projects.html">Back to all work</a>
+      </div>
+    </div>
+    <div class="foot-bar"><span><b>Jai Singh<em>.</em></b> Product Systems Designer · Chandigarh, India</span><span>© 2026 Jai Singh</span></div>
+  </div>
+</footer>
+<script src="../js/interface-ds.js"></script>
+</body>
+</html>
