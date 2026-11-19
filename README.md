@@ -6,7 +6,7 @@ Portfolio website: enterprise UX, information architecture and design systems.
 - **Experience:** `pages/experience.html`
 - **All projects:** `pages/projects.html`
 - **CV:** `pages/cv.html` (PDF in `assets/cv/`)
-- **Case studies:** `case-studies/farmart-os.html`, `case-studies/farmart-pro.html`, `case-studies/farmart-app.html`
+- **Case studies:** `case-studies/farmart-os.html`, `case-studies/farmart-pro.html`, `case-studies/farmart-app.html`, `case-studies/interface-ds.html` (with the interactive `case-studies/interface-studio.html`)
 - **Shared CSS:** `css/` · **Shared JS:** `js/`
 
 Connect: [LinkedIn](https://www.linkedin.com/in/jai-singh-639511173/) · [Behance](https://www.behance.net/just03jaif1e6) · [Dribbble](https://dribbble.com/Jai03)
